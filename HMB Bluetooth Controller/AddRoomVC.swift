@@ -31,6 +31,9 @@ class AddRoomVC: UIViewController {
         lblTitle.text = "ADD ROOM"
         lblTitle.textColor = redColor
         
+        
+        
+        
         self.navigationItem.titleView = lblTitle
     }
     

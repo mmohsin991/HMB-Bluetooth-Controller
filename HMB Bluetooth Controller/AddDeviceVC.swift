@@ -8,18 +8,59 @@
 
 import UIKit
 
-class AddDeviceVC: UIViewController {
+class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
 
+    var types = ["A Device","ABC Device","ZA Device","FGHJ HH Device","ZX Device5"]
+
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var txtName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        self.pickerView.selectRow(2, inComponent: 0, animated: true)
+
+        txtName.layer.cornerRadius = 6.0
+        txtName.layer.borderColor = redColor.CGColor
+        txtName.layer.borderWidth = 1.0
+        
+        
+        // change color and the name of navigation title
+        let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
+        lblTitle.text = "ADD DEVICE"
+        lblTitle.textColor = redColor
+        
+        self.navigationItem.titleView = lblTitle
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // returns the number of 'columns' to display.
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // returns the # of rows in each component..
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.types.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return self.types[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //lableHeading.text = names[row]
+    }
+    
+
     
 
     @IBAction func done(sender: UIBarButtonItem) {
@@ -34,7 +75,7 @@ class AddDeviceVC: UIViewController {
     }
     
     @IBAction func QRButton(sender: UIButton) {
-        
+        println("QR button Press")
     }
     
 

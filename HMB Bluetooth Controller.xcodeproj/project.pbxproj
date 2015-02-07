@@ -441,6 +441,7 @@
 				421DFBBA1A8625FA0098E582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		421DFBBB1A8625FA0098E582 /* Build configuration list for PBXNativeTarget "HMB Bluetooth ControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +450,7 @@
 				421DFBBD1A8625FA0098E582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

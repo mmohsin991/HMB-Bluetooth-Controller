@@ -23,7 +23,7 @@ class PreferenceCV: UIViewController {
         cancelButton.tintColor = redColor
 
         
-        // change the name of navigation title
+        // change color and the name of navigation title
         let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
         lblTitle.text = "EINSTELLUNGEN"
         lblTitle.textColor = redColor

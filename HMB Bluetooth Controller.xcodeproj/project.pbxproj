@@ -14,6 +14,14 @@
 		421DFBA61A8625FA0098E582 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 421DFBA51A8625FA0098E582 /* Images.xcassets */; };
 		421DFBA91A8625FA0098E582 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 421DFBA71A8625FA0098E582 /* LaunchScreen.xib */; };
 		421DFBB51A8625FA0098E582 /* HMB_Bluetooth_ControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBB41A8625FA0098E582 /* HMB_Bluetooth_ControllerTests.swift */; };
+		421DFBBF1A86262F0098E582 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBBE1A86262F0098E582 /* HomeVC.swift */; };
+		421DFBC11A8628580098E582 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC01A8628580098E582 /* RoomCell.swift */; };
+		421DFBC31A8631DA0098E582 /* RoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC21A8631DA0098E582 /* RoomVC.swift */; };
+		421DFBC51A8632D90098E582 /* DeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC41A8632D90098E582 /* DeviceCell.swift */; };
+		421DFBC71A8644D40098E582 /* AddRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC61A8644D40098E582 /* AddRoomVC.swift */; };
+		421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC81A8644F20098E582 /* AddDeviceVC.swift */; };
+		421DFBCB1A86453E0098E582 /* PreferenceCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBCA1A86453E0098E582 /* PreferenceCV.swift */; };
+		421DFBCD1A8646D80098E582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBCC1A8646D80098E582 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +46,14 @@
 		421DFBAE1A8625FA0098E582 /* HMB Bluetooth ControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HMB Bluetooth ControllerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		421DFBB31A8625FA0098E582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		421DFBB41A8625FA0098E582 /* HMB_Bluetooth_ControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMB_Bluetooth_ControllerTests.swift; sourceTree = "<group>"; };
+		421DFBBE1A86262F0098E582 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		421DFBC01A8628580098E582 /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		421DFBC21A8631DA0098E582 /* RoomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomVC.swift; sourceTree = "<group>"; };
+		421DFBC41A8632D90098E582 /* DeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
+		421DFBC61A8644D40098E582 /* AddRoomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomVC.swift; sourceTree = "<group>"; };
+		421DFBC81A8644F20098E582 /* AddDeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceVC.swift; sourceTree = "<group>"; };
+		421DFBCA1A86453E0098E582 /* PreferenceCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceCV.swift; sourceTree = "<group>"; };
+		421DFBCC1A8646D80098E582 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +97,14 @@
 			children = (
 				421DFB9B1A8625FA0098E582 /* AppDelegate.swift */,
 				421DFBA01A8625FA0098E582 /* ViewController.swift */,
+				421DFBBE1A86262F0098E582 /* HomeVC.swift */,
+				421DFBC01A8628580098E582 /* RoomCell.swift */,
+				421DFBC61A8644D40098E582 /* AddRoomVC.swift */,
+				421DFBC21A8631DA0098E582 /* RoomVC.swift */,
+				421DFBC41A8632D90098E582 /* DeviceCell.swift */,
+				421DFBC81A8644F20098E582 /* AddDeviceVC.swift */,
+				421DFBCA1A86453E0098E582 /* PreferenceCV.swift */,
+				421DFBCC1A8646D80098E582 /* Constants.swift */,
 				421DFBA21A8625FA0098E582 /* Main.storyboard */,
 				421DFBA51A8625FA0098E582 /* Images.xcassets */,
 				421DFBA71A8625FA0098E582 /* LaunchScreen.xib */,
@@ -216,7 +240,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				421DFBA11A8625FA0098E582 /* ViewController.swift in Sources */,
+				421DFBCD1A8646D80098E582 /* Constants.swift in Sources */,
+				421DFBC71A8644D40098E582 /* AddRoomVC.swift in Sources */,
+				421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */,
+				421DFBC31A8631DA0098E582 /* RoomVC.swift in Sources */,
+				421DFBBF1A86262F0098E582 /* HomeVC.swift in Sources */,
+				421DFBC51A8632D90098E582 /* DeviceCell.swift in Sources */,
 				421DFB9F1A8625FA0098E582 /* HMB_Bluetooth_Controller.xcdatamodeld in Sources */,
+				421DFBCB1A86453E0098E582 /* PreferenceCV.swift in Sources */,
+				421DFBC11A8628580098E582 /* RoomCell.swift in Sources */,
 				421DFB9C1A8625FA0098E582 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

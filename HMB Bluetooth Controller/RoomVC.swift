@@ -16,7 +16,7 @@
 
 import UIKit
 
-class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate  {
     
     
     var selectedRoomName : String!
@@ -111,10 +111,35 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // select the device
         selectedDeviceName = self.devices.keys.array[indexPath.row]
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
+        //let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
         //cell.backgroundColor = UIColor.lightGrayColor()
         
-        self.performSegueWithIdentifier("deviceDetailSeg", sender: self)
+        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("deviceVCID") as? DeviceVC
+        
+        
+        // set the tab bar shado
+
+        
+        menuViewController?.modalPresentationStyle = .Popover
+        menuViewController?.preferredContentSize = CGSizeMake(260, 340)
+        menuViewController?.view.layer.cornerRadius = 1.0
+        menuViewController?.view.layer.shadowColor = UIColor.grayColor().CGColor
+        menuViewController?.view.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
+        menuViewController?.view.layer.shadowOpacity = 0.8
+        menuViewController?.view.layer.shadowRadius = 5.0
+        menuViewController?.view.layer.masksToBounds = true
+        
+
+
+        
+        let popoverMenuViewController = menuViewController?.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        popoverMenuViewController?.sourceRect = CGRect(x: 30, y: 100, width: 260, height: 340)
+        
+
+        presentViewController( menuViewController!, animated: true, completion: nil)
         
         
     }
@@ -133,15 +158,17 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "deviceDetailSeg" {
-            //
-            //            let detailView = segue.destinationViewController as SubCategoryList
-            //            detailView.categoryName = selectedDeviceName
+
+
         }
         
     }
     
     
     
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
     
     func addDevice() {
 

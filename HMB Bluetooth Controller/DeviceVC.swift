@@ -9,11 +9,26 @@
 import UIKit
 
 class DeviceVC: UIViewController {
+    
+    
+    @IBOutlet weak var imgDevice: UIImageView!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblExtra: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var switchOn: UISwitch!
+    @IBOutlet weak var lblTimer: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+ 
+        // set the shadow of switchOn button
+        self.switchOn.layer.shadowColor = UIColor.darkGrayColor().CGColor
+        self.switchOn.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.switchOn.layer.shadowOpacity = 1.0
+        self.switchOn.layer.shadowRadius = 3.0
+        self.switchOn.layer.masksToBounds = false
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

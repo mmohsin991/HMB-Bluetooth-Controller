@@ -573,29 +573,64 @@
         <!--DeviceVC-->
         <scene sceneID="TzJ-Up-GjA">
             <objects>
-                <viewController id="PdS-zW-pPP" customClass="DeviceVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="deviceVCID" id="PdS-zW-pPP" customClass="DeviceVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I2x-ZT-Cad"/>
                         <viewControllerLayoutGuide type="bottom" id="AmM-5F-V6Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4tV-iD-iAQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-2E-yC6">
-                                <rect key="frame" x="139" y="208" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEMPERATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-2E-yC6">
+                                <rect key="frame" x="16" y="157" width="228" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="uE5-ll-acT">
+                                <rect key="frame" x="80" y="20" width="100" height="100"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DEVICE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY4-jr-aW4">
+                                <rect key="frame" x="16" y="110" width="228" height="45"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-BS-D9r">
+                                <rect key="frame" x="16" y="191" width="228" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LAST STEUERUNG VOM AT 09:10pm 4 Februar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW5-Sc-WXx">
+                                <rect key="frame" x="16" y="288" width="228" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2co-m3-YFl">
+                                <rect key="frame" x="106" y="249" width="51" height="31"/>
+                                <color key="onTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="thumbTintColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="260" height="340"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="260" height="340"/>
+                    <connections>
+                        <outlet property="imgDevice" destination="uE5-ll-acT" id="jit-jr-rCh"/>
+                        <outlet property="lblExtra" destination="fPb-2E-yC6" id="OZ2-Xi-Lcd"/>
+                        <outlet property="lblName" destination="HY4-jr-aW4" id="a9D-nt-yTX"/>
+                        <outlet property="lblTimer" destination="cW5-Sc-WXx" id="9JJ-lB-e2C"/>
+                        <outlet property="slider" destination="PbY-BS-D9r" id="O8I-2F-MtX"/>
+                        <outlet property="switchOn" destination="2co-m3-YFl" id="ABW-Ql-vjN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1x-aw-gZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="344"/>
+            <point key="canvasLocation" x="2225" y="344"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VH3-rQ-hrl">
@@ -637,6 +672,7 @@
     <resources>
         <image name="QR" width="87" height="90"/>
         <image name="home" width="42" height="42"/>
+        <image name="room" width="65" height="50"/>
         <image name="settings_remote" width="42" height="42"/>
         <image name="today" width="42" height="42"/>
     </resources>

@@ -20,7 +20,9 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     var selectedRoomName : String!
+    var selectedRoomNumber : [Int:Int]!
 
+    @IBOutlet weak var lblRoomNumber: UILabel!
     
     var devices = ["device1":"device", "device2":"device", "device3":"device", "device4":"device","device5":"device"]
     
@@ -36,13 +38,36 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         tempButton.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         tempButton.setTitleColor(redColor, forState: .Normal)
         
+        // set the name of navigation item a/c to room's name
+        if selectedRoomName != nil {
+
+            let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
+            lblTitle.text = selectedRoomName
+            lblTitle.textColor = redColor
+            
+            self.navigationItem.titleView = lblTitle
+        }
+        
+        if selectedRoomNumber != nil {
+            lblRoomNumber.text = "\(self.selectedRoomNumber.keys.array[0]+1)/\(self.selectedRoomNumber.values.array[0])"
+        }
+        
+        // set corner of the lblRoomNumber round
+        self.lblRoomNumber.layer.cornerRadius = 10.0
+        self.lblRoomNumber.layer.masksToBounds = true
+        
+        // animation to hide the room number
+        UIView.transitionWithView(self.lblRoomNumber, duration: 2.0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            self.lblRoomNumber.alpha = 0.0
+        }, completion: nil)
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: tempButton)
         
-        //Set navigation bar image
-        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
-        logoImageView.image = UIImage(named: "Logo.png")
-        logoImageView.contentMode = .ScaleAspectFit
-        self.navigationItem.titleView = logoImageView
+//        //Set navigation bar image
+//        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
+//        logoImageView.image = UIImage(named: "Logo.png")
+//        logoImageView.contentMode = .ScaleAspectFit
+//        self.navigationItem.titleView = logoImageView
         
         
         //Set navigation bar button
@@ -72,7 +97,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
-        cell.layer.borderColor = UIColor.darkGrayColor().CGColor
+        cell.layer.borderColor = UIColor.grayColor().CGColor
         cell.layer.borderWidth = 1.0
         
         //cell.backgroundColor = UIColor.grayColor()
@@ -89,6 +114,8 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
         //cell.backgroundColor = UIColor.lightGrayColor()
         
+        self.performSegueWithIdentifier("deviceDetailSeg", sender: self)
+        
         
     }
     
@@ -103,8 +130,9 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let targetSize = CGSize(width: collectionViewWidth/2.02, height: collectionViewWidth/2.2 )
         return targetSize
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "subCategoriesVC" {
+        if segue.identifier == "deviceDetailSeg" {
             //
             //            let detailView = segue.destinationViewController as SubCategoryList
             //            detailView.categoryName = selectedDeviceName

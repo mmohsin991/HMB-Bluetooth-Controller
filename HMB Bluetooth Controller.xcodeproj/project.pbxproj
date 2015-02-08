@@ -25,6 +25,7 @@
 		4234DFB51A86AD2A00A2F725 /* EmptyScreen1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */; };
 		4234DFB71A86AD4700A2F725 /* EmptyScreen2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */; };
 		4234DFB91A86AE9000A2F725 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB81A86AE9000A2F725 /* TabBarController.swift */; };
+		423D792B1A8773CB0054A2FA /* DeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D792A1A8773CB0054A2FA /* DeviceVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyScreen1VC.swift; sourceTree = "<group>"; };
 		4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyScreen2VC.swift; sourceTree = "<group>"; };
 		4234DFB81A86AE9000A2F725 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		423D792A1A8773CB0054A2FA /* DeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				421DFBC61A8644D40098E582 /* AddRoomVC.swift */,
 				421DFBC21A8631DA0098E582 /* RoomVC.swift */,
 				421DFBC41A8632D90098E582 /* DeviceCell.swift */,
+				423D792A1A8773CB0054A2FA /* DeviceVC.swift */,
 				421DFBC81A8644F20098E582 /* AddDeviceVC.swift */,
 				421DFBCA1A86453E0098E582 /* PreferenceCV.swift */,
 				4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */,
@@ -252,6 +255,7 @@
 				421DFBCD1A8646D80098E582 /* Constants.swift in Sources */,
 				421DFBC71A8644D40098E582 /* AddRoomVC.swift in Sources */,
 				421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */,
+				423D792B1A8773CB0054A2FA /* DeviceVC.swift in Sources */,
 				4234DFB51A86AD2A00A2F725 /* EmptyScreen1VC.swift in Sources */,
 				421DFBC31A8631DA0098E582 /* RoomVC.swift in Sources */,
 				421DFBBF1A86262F0098E582 /* HomeVC.swift in Sources */,

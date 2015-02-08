@@ -58,7 +58,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
-        cell.layer.borderColor = UIColor.darkGrayColor().CGColor
+        cell.layer.borderColor = UIColor.grayColor().CGColor
         cell.layer.borderWidth = 1.0
         
         //cell.backgroundColor = UIColor.grayColor()
@@ -75,7 +75,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell
         //cell.backgroundColor = UIColor.lightGrayColor()
         
-        performSegueWithIdentifier("roomDetailSeg", sender: self)
+        performSegueWithIdentifier("roomDetailSeg", sender: indexPath.row)
         
     }
     
@@ -87,7 +87,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // NOTE: here is where we ask our sizing cell to compute what height it needs
-        let targetSize = CGSize(width: collectionViewWidth/2.02, height: collectionViewWidth/2.2 )
+        let targetSize = CGSize(width: collectionViewWidth/2.0, height: collectionViewWidth/2.0)
         return targetSize
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -95,6 +95,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             
             let detailView = segue.destinationViewController as RoomVC
             detailView.selectedRoomName = self.selectedRoomName
+            let selectedRow = sender as Int
+            detailView.selectedRoomNumber = [selectedRow:self.rooms.keys.array.count]
         }
         
     }

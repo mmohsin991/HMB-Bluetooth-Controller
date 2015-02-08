@@ -14,5 +14,8 @@ class DeviceCell: UICollectionViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var badge: UIImageView!
+    @IBOutlet weak var lblFooter: UILabel!
+    @IBOutlet weak var lblRight: UILabel!
+    
     
 }

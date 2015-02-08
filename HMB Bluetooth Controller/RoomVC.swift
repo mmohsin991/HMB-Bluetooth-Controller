@@ -24,12 +24,14 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
     @IBOutlet weak var lblRoomNumber: UILabel!
     
-    var devices = ["device1":"device", "device2":"device", "device3":"device", "device4":"device","device5":"device"]
+    var devices = ["device1":"device", "device2":"device", "device3":"device", "device4":"device","device5":"device","device6":"device","device7":"device",]
     
     var selectedDeviceName : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         // just for center the logo
         let tempButton = UIButton(frame: (CGRect(x: 0, y: 0, width: self.view.frame.size.width/3.555, height: 30)))
@@ -77,6 +79,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         ]
         self.navigationItem.rightBarButtonItems = barButtons
         
+        
     }
     
     
@@ -87,6 +90,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("deviceCell", forIndexPath: indexPath) as DeviceCell
+        
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the device image
@@ -97,10 +101,11 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
-        cell.layer.borderColor = UIColor.grayColor().CGColor
-        cell.layer.borderWidth = 1.0
+//        cell.layer.borderColor = UIColor.grayColor().CGColor
+//        cell.layer.borderWidth = 1.0
         
         //cell.backgroundColor = UIColor.grayColor()
+        
         
         return cell
     }
@@ -122,12 +127,12 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         menuViewController?.modalPresentationStyle = .Popover
         menuViewController?.preferredContentSize = CGSizeMake(260, 340)
-        menuViewController?.view.layer.cornerRadius = 1.0
-        menuViewController?.view.layer.shadowColor = UIColor.grayColor().CGColor
-        menuViewController?.view.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
-        menuViewController?.view.layer.shadowOpacity = 0.8
-        menuViewController?.view.layer.shadowRadius = 5.0
-        menuViewController?.view.layer.masksToBounds = true
+//        menuViewController?.view.layer.cornerRadius = 1.0
+//        menuViewController?.view.layer.shadowColor = UIColor.grayColor().CGColor
+//        menuViewController?.view.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
+//        menuViewController?.view.layer.shadowOpacity = 0.8
+//        menuViewController?.view.layer.shadowRadius = 5.0
+//        menuViewController?.view.layer.masksToBounds = true
         
 
 
@@ -144,15 +149,13 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
     }
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         // NOTE: here is where we say we want cells to use the width of the collection view
         let collectionViewWidth = collectionView.bounds.size.width
         
         // NOTE: here is where we ask our sizing cell to compute what height it needs
-        let targetSize = CGSize(width: collectionViewWidth/2.02, height: collectionViewWidth/2.2 )
+        let targetSize = CGSize(width: collectionViewWidth/2.0, height: collectionViewWidth/2.0 )
         return targetSize
     }
     

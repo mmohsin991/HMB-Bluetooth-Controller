@@ -58,8 +58,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
-        cell.layer.borderColor = UIColor.grayColor().CGColor
-        cell.layer.borderWidth = 1.0
+//        cell.layer.borderColor = UIColor.grayColor().CGColor
+//        cell.layer.borderWidth = 1.0
         
         //cell.backgroundColor = UIColor.grayColor()
         

@@ -29,6 +29,15 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // just for center the logo
+        let tempButton = UIButton(frame: (CGRect(x: 0, y: 0, width: self.view.frame.size.width/3.555, height: 30)))
+        tempButton.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+        tempButton.setTitle("BACK           ", forState: UIControlState.Normal)
+        tempButton.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tempButton.setTitleColor(redColor, forState: .Normal)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: tempButton)
+        
         //Set navigation bar image
         let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
         logoImageView.image = UIImage(named: "Logo.png")
@@ -78,9 +87,8 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         selectedDeviceName = self.devices.keys.array[indexPath.row]
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
-        cell.backgroundColor = UIColor.lightGrayColor()
+        //cell.backgroundColor = UIColor.lightGrayColor()
         
-        // performSegueWithIdentifier("subCategoriesVC", sender: self)
         
     }
     
@@ -116,6 +124,10 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         performSegueWithIdentifier("preferenceSeg", sender: self)
     }
     
+    func back() {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 
 

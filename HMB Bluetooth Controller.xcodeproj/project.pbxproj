@@ -22,6 +22,9 @@
 		421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBC81A8644F20098E582 /* AddDeviceVC.swift */; };
 		421DFBCB1A86453E0098E582 /* PreferenceCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBCA1A86453E0098E582 /* PreferenceCV.swift */; };
 		421DFBCD1A8646D80098E582 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBCC1A8646D80098E582 /* Constants.swift */; };
+		4234DFB51A86AD2A00A2F725 /* EmptyScreen1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */; };
+		4234DFB71A86AD4700A2F725 /* EmptyScreen2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */; };
+		4234DFB91A86AE9000A2F725 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234DFB81A86AE9000A2F725 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		421DFBC81A8644F20098E582 /* AddDeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceVC.swift; sourceTree = "<group>"; };
 		421DFBCA1A86453E0098E582 /* PreferenceCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceCV.swift; sourceTree = "<group>"; };
 		421DFBCC1A8646D80098E582 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyScreen1VC.swift; sourceTree = "<group>"; };
+		4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyScreen2VC.swift; sourceTree = "<group>"; };
+		4234DFB81A86AE9000A2F725 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 				421DFBC41A8632D90098E582 /* DeviceCell.swift */,
 				421DFBC81A8644F20098E582 /* AddDeviceVC.swift */,
 				421DFBCA1A86453E0098E582 /* PreferenceCV.swift */,
+				4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */,
+				4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */,
+				4234DFB81A86AE9000A2F725 /* TabBarController.swift */,
 				421DFBCC1A8646D80098E582 /* Constants.swift */,
 				421DFBA21A8625FA0098E582 /* Main.storyboard */,
 				421DFBA51A8625FA0098E582 /* Images.xcassets */,
@@ -243,12 +252,15 @@
 				421DFBCD1A8646D80098E582 /* Constants.swift in Sources */,
 				421DFBC71A8644D40098E582 /* AddRoomVC.swift in Sources */,
 				421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */,
+				4234DFB51A86AD2A00A2F725 /* EmptyScreen1VC.swift in Sources */,
 				421DFBC31A8631DA0098E582 /* RoomVC.swift in Sources */,
 				421DFBBF1A86262F0098E582 /* HomeVC.swift in Sources */,
 				421DFBC51A8632D90098E582 /* DeviceCell.swift in Sources */,
 				421DFB9F1A8625FA0098E582 /* HMB_Bluetooth_Controller.xcdatamodeld in Sources */,
 				421DFBCB1A86453E0098E582 /* PreferenceCV.swift in Sources */,
 				421DFBC11A8628580098E582 /* RoomCell.swift in Sources */,
+				4234DFB91A86AE9000A2F725 /* TabBarController.swift in Sources */,
+				4234DFB71A86AD4700A2F725 /* EmptyScreen2VC.swift in Sources */,
 				421DFB9C1A8625FA0098E582 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +453,7 @@
 				421DFBBA1A8625FA0098E582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		421DFBBB1A8625FA0098E582 /* Build configuration list for PBXNativeTarget "HMB Bluetooth ControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +462,7 @@
 				421DFBBD1A8625FA0098E582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

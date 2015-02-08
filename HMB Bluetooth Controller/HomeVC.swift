@@ -17,6 +17,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // just for center the logo
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView(frame: (CGRect(x: 0, y: 0, width: self.view.frame.size.width/3.555, height: 30))))
+        
 
         //Set navigation bar image
         let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
@@ -31,6 +35,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addRoom")
         ]
         self.navigationItem.rightBarButtonItems = barButtons
+        
+
         
     }
     
@@ -67,7 +73,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         selectedRoomName = self.rooms.keys.array[indexPath.row]
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell
-        cell.backgroundColor = UIColor.lightGrayColor()
+        //cell.backgroundColor = UIColor.lightGrayColor()
         
         performSegueWithIdentifier("roomDetailSeg", sender: self)
         
@@ -102,5 +108,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func preference() {
         performSegueWithIdentifier("preferenceSeg", sender: self)
     }
+    
+    
 }
 

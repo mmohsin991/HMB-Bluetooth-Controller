@@ -6,7 +6,12 @@
 //  Copyright (c) 2015 HMB-TEC. All rights reserved.
 //
 
+<<<<<<< HEAD
 // Master Branch
+=======
+// Mohsin's Branch
+
+>>>>>>> Mohsin's-Branch
 
 import UIKit
 import CoreData

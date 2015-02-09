@@ -8,10 +8,18 @@
 
 import UIKit
 
+
+protocol AddRoomDelegate{
+
+    func aadRoom(name: String, type: String, VC : UIViewController)
+    
+}
+
 class AddRoomVC: UIViewController {
 
-    var types = ["BAD", "WC", "KINDERZIMMER", "BALKON", "BÜRO", "KELLER", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
+    var types = ["BAD", "WC","KELLER", "KINDERZIMMER", "BALKON", "BURO", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
 
+    var delegate : AddRoomDelegate!
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var txtName: UITextField!
@@ -82,8 +90,16 @@ class AddRoomVC: UIViewController {
     @IBAction func done(sender: UIBarButtonItem) {
         
         // do some before dismiss the view
+        let index = self.pickerView.selectedRowInComponent(0)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        println(index)
+        println(self.types[[index][0]])
+
+        if self.txtName.text != "" {
+            self.delegate.aadRoom(self.txtName.text, type: self.types[[index][0]], VC: self)
+        }
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
@@ -91,6 +107,7 @@ class AddRoomVC: UIViewController {
     }
     
     @IBAction func QRButton(sender: UIButton) {
+        
         println("QR button Press")
     }
 

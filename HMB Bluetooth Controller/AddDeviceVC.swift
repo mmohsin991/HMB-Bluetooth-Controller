@@ -8,9 +8,18 @@
 
 import UIKit
 
+
+protocol AddDeviceDelegate{
+    
+    func addDevice(name: String, type: String, VC : UIViewController)
+    
+}
+
 class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
 
     var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
+
+    var delegate : AddDeviceDelegate!
 
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -18,6 +27,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         
         self.pickerView.selectRow(5, inComponent: 0, animated: true)
@@ -65,9 +75,16 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     @IBAction func done(sender: UIBarButtonItem) {
         
+        let index = self.pickerView.selectedRowInComponent(0)
+
+        println(self.types[[index][0]])
         // do some before dismiss the view
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if self.txtName.text != "" {
+            self.delegate.addDevice(self.txtName.text, type: self.types[[index][0]], VC: self)
+        }
+        
+       // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {

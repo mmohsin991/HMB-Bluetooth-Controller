@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420CB5781A893F70006C6B40 /* DeleteRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CB5771A893F6F006C6B40 /* DeleteRoomVC.swift */; };
 		421DFB9C1A8625FA0098E582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFB9B1A8625FA0098E582 /* AppDelegate.swift */; };
 		421DFB9F1A8625FA0098E582 /* HMB_Bluetooth_Controller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 421DFB9D1A8625FA0098E582 /* HMB_Bluetooth_Controller.xcdatamodeld */; };
 		421DFBA11A8625FA0098E582 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421DFBA01A8625FA0098E582 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420CB5771A893F6F006C6B40 /* DeleteRoomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteRoomVC.swift; sourceTree = "<group>"; };
 		421DFB961A8625FA0098E582 /* HMB Bluetooth Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HMB Bluetooth Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		421DFB9A1A8625FA0098E582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		421DFB9B1A8625FA0098E582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				421DFBCA1A86453E0098E582 /* PreferenceCV.swift */,
 				4234DFB41A86AD2A00A2F725 /* EmptyScreen1VC.swift */,
 				4234DFB61A86AD4700A2F725 /* EmptyScreen2VC.swift */,
+				420CB5771A893F6F006C6B40 /* DeleteRoomVC.swift */,
 				4234DFB81A86AE9000A2F725 /* TabBarController.swift */,
 				421DFBCC1A8646D80098E582 /* Constants.swift */,
 				421DFBA21A8625FA0098E582 /* Main.storyboard */,
@@ -257,6 +260,7 @@
 				421DFBC91A8644F20098E582 /* AddDeviceVC.swift in Sources */,
 				423D792B1A8773CB0054A2FA /* DeviceVC.swift in Sources */,
 				4234DFB51A86AD2A00A2F725 /* EmptyScreen1VC.swift in Sources */,
+				420CB5781A893F70006C6B40 /* DeleteRoomVC.swift in Sources */,
 				421DFBC31A8631DA0098E582 /* RoomVC.swift in Sources */,
 				421DFBBF1A86262F0098E582 /* HomeVC.swift in Sources */,
 				421DFBC51A8632D90098E582 /* DeviceCell.swift in Sources */,

@@ -126,6 +126,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aoF-04-xdn"/>
                     <connections>
+                        <outlet property="HomeCollectionView" destination="dQc-PG-JKe" id="KuH-Vu-KLS"/>
                         <segue destination="YOM-Y9-OjT" kind="show" identifier="roomDetailSeg" id="15h-tY-MGc"/>
                         <segue destination="yJv-78-OKh" kind="presentation" identifier="addRoomSeg" id="NjV-AD-Sr4"/>
                         <segue destination="Yc9-mY-jcC" kind="show" identifier="preferenceSeg" id="a3I-ej-6XV"/>
@@ -151,6 +152,7 @@
                         <segue destination="gCU-SZ-8MP" kind="relationship" relationship="viewControllers" id="Qbb-ym-BQf"/>
                         <segue destination="vqS-nu-AMe" kind="relationship" relationship="viewControllers" id="Wad-ML-hlJ"/>
                         <segue destination="Xmj-ra-GFv" kind="relationship" relationship="viewControllers" id="uQW-NU-T1E"/>
+                        <segue destination="mUN-h9-0pt" kind="relationship" relationship="viewControllers" id="66z-mr-CS5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TqZ-gK-wiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,6 +316,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="O9a-JX-PbE"/>
                     <connections>
+                        <outlet property="deviceCollectionView" destination="dZW-pL-8Qq" id="QNA-Bt-bqS"/>
                         <outlet property="lblRoomNumber" destination="XV9-bz-FIs" id="lH5-zR-MQX"/>
                         <segue destination="Gw8-PJ-bSx" kind="presentation" identifier="addDeviceSeg" id="8bo-oF-oBP"/>
                         <segue destination="Yc9-mY-jcC" kind="show" identifier="preferenceSeg" id="B1q-Rr-1dX"/>
@@ -350,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVX-kE-CrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="-491"/>
+            <point key="canvasLocation" x="1587" y="-491"/>
         </scene>
         <!--Empty Screen1VC-->
         <scene sceneID="EG9-aR-lXV">
@@ -382,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0P-fZ-5KS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="-497"/>
+            <point key="canvasLocation" x="962" y="-497"/>
         </scene>
         <!--ADD ROOM-->
         <scene sceneID="dmq-hC-BVk">
@@ -511,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6e-5q-527" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1771" y="1387"/>
+            <point key="canvasLocation" x="1848" y="1387"/>
         </scene>
         <!--ADD DEVICE-->
         <scene sceneID="1Zh-fr-DD3">
@@ -887,15 +890,88 @@
             </objects>
             <point key="canvasLocation" x="2304" y="1387"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dXi-Um-KWa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUN-h9-0pt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="delete" id="RA7-pV-qGo">
+                        <inset key="imageInsets" minX="2" minY="6" maxX="2" maxY="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hRh-0X-jpx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NlF-gG-3c4" kind="relationship" relationship="rootViewController" id="mAf-1g-yJn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sh1-dL-V30" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-70" y="-506"/>
+        </scene>
+        <!--Delete RoomVC-->
+        <scene sceneID="rNn-BA-HGr">
+            <objects>
+                <tableViewController id="NlF-gG-3c4" customClass="DeleteRoomVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="R1S-y8-ZNO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="veL-vO-H5j" customClass="DeleteRoomCell" customModule="HMB_Bluetooth_Controller" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="veL-vO-H5j" id="PyE-tm-gkn">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5t-jt-PKm">
+                                            <rect key="frame" x="18" y="10" width="204" height="52"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-Ic-Rm0">
+                                            <rect key="frame" x="230" y="-1" width="90" height="71"/>
+                                            <color key="backgroundColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="DELETE">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteRoom:" destination="veL-vO-H5j" eventType="touchUpInside" id="LVB-8g-NBG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnDelete" destination="pJy-Ic-Rm0" id="RUP-RL-wBE"/>
+                                    <outlet property="lblName" destination="S5t-jt-PKm" id="iG0-GL-8v8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NlF-gG-3c4" id="WLd-rJ-YGQ"/>
+                            <outlet property="delegate" destination="NlF-gG-3c4" id="lr0-Tw-SW2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nhD-bM-XUG"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z2k-me-IVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-511"/>
+        </scene>
     </scenes>
     <resources>
         <image name="QR" width="87" height="90"/>
+        <image name="delete" width="35" height="42"/>
         <image name="home" width="42" height="42"/>
         <image name="room" width="65" height="50"/>
         <image name="settings_remote" width="42" height="42"/>
         <image name="today" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a3I-ej-6XV"/>
+        <segue reference="B1q-Rr-1dX"/>
     </inferredMetricsTieBreakers>
 </document>

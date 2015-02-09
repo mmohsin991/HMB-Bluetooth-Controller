@@ -8,15 +8,16 @@
 
 import UIKit
 
-class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,AddRoomDelegate  {
     
     
+    @IBOutlet weak var HomeCollectionView: UICollectionView!
 
     // NOTE "FLUR" room image not available
     
-    var roomsType = ["BAD", "WC", "KINDERZIMMER", "BALKON", "BÜRO", "KELLER", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
+    var roomsType = roomsTypeGloble
     
-    var rooms = ["room1":"BAD", "room2":"KINDERZIMMER", "room3":"BALKON", "room4":"WC","room5":"ESSZIMMER"]
+    var rooms = ["ROOM1":"BAD", "ROOM2":"KINDERZIMMER", "ROOM3":"BALKON", "ROOM4":"BURO","ROOM5":"ESSZIMMER"]
 
     var selectedRoomName : String!
     
@@ -112,9 +113,23 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             detailView.selectedRoomNumber = [selectedRow:self.rooms.keys.array.count]
         }
         
+        if segue.identifier == "addRoomSeg" {
+            
+            let detailView = (segue.destinationViewController as UINavigationController).viewControllers[0] as AddRoomVC
+            
+            detailView.delegate = self
+
+        }
+
+        
     }
 
-    
+    func aadRoom(name: String, type: String, VC : UIViewController){
+        self.rooms[name] = type
+        VC.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.HomeCollectionView.reloadData()
+    }
     
     
     func addRoom() {

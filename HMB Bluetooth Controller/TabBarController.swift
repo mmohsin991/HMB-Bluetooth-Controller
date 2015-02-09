@@ -18,7 +18,8 @@ class TabBarController: UITabBarController {
         (self.tabBar.items![0] as UITabBarItem).image = UIImage(named: "home").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         (self.tabBar.items![1] as UITabBarItem).image = UIImage(named: "settings_remote").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         (self.tabBar.items![2] as UITabBarItem).image = UIImage(named: "today").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-
+        (self.tabBar.items![3] as UITabBarItem).image = UIImage(named: "delete").imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        
         // selected tab bar image color
         self.tabBar.tintColor = redColor
         

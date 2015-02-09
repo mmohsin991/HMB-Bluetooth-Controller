@@ -16,7 +16,7 @@
 
 import UIKit
 
-class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate  {
+class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, AddDeviceDelegate  {
     
     
     var selectedRoomName : String!
@@ -25,8 +25,9 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var deviceTypes :[String] = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
     
     @IBOutlet weak var lblRoomNumber: UILabel!
+    @IBOutlet weak var deviceCollectionView: UICollectionView!
     
-    var devices = ["device1": "LAMPE","device2": "BACKOFEN","device3": "VENTILATOR","device4": "MARKISE","device5": "STECKDOSE"]
+    var devices = ["DEVICE1": "LAMPE","DEVICE2": "BACKOFEN","DEVICE3": "VENTILATOR","DEVICE4": "MARKISE","DEVICE5": "STECKDOSE"]
     
     var selectedDeviceName : String!
     
@@ -192,10 +193,22 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
 
         }
-        
+        if segue.identifier == "addDeviceSeg" {
+            
+            let detailView = (segue.destinationViewController as UINavigationController).viewControllers[0] as AddDeviceVC
+            
+            detailView.delegate = self
+            
+        }
     }
     
     
+    func addDevice(name: String, type: String, VC : UIViewController){
+        self.devices[name] = type
+        VC.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.deviceCollectionView.reloadData()
+    }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None

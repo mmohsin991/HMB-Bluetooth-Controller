@@ -71,7 +71,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.lblName.text = rooms.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
 
+        //cell.lblBottom.frame = CGRect(x: collectionView.frame.origin.x, y: collectionView.frame.origin.x+collectionViewWidth, width: collectionView.bounds.size.width, height: 1)
         
+       // cell.lblBottom. = CGRect(x: 10, y: 10, width: 10, height: 100)
         //cell.backgroundColor = UIColor.grayColor()
         
         return cell

@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "BÜRO.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "GMBH  Screen-1.jpg"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

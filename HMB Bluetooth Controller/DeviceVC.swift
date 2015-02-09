@@ -18,16 +18,30 @@ class DeviceVC: UIViewController {
     @IBOutlet weak var switchOn: UISwitch!
     @IBOutlet weak var lblTimer: UILabel!
 
+     var imgDeviceVARString = String()
+     var nameVAR = String()
+     var extraVAR = UILabel()
+     var timerVAR = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
+        println(nameVAR)
+        
+        let img = UIImage(named: self.imgDeviceVARString).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        self.imgDevice.image = img
+        self.imgDevice.tintColor = redColor
+//        self.imgDevice.tintColor = redColor
+        
+        self.lblName.text = self.nameVAR
+        
         // set the shadow of switchOn button
         self.switchOn.layer.shadowColor = UIColor.darkGrayColor().CGColor
         self.switchOn.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         self.switchOn.layer.shadowOpacity = 1.0
         self.switchOn.layer.shadowRadius = 3.0
         self.switchOn.layer.masksToBounds = false
-        
         
     }
 

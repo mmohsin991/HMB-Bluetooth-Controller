@@ -9,8 +9,9 @@
 import UIKit
 
 class AddRoomVC: UIViewController {
-    var types = ["A Room","ABC Room","ZA Room","FGHJ HH Room","ZX Room"]
-    
+
+    var types = ["BAD", "WC", "KINDERZIMMER", "BALKON", "BÜRO", "KELLER", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
+
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var txtName: UITextField!
@@ -20,7 +21,7 @@ class AddRoomVC: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        self.pickerView.selectRow(2, inComponent: 0, animated: true)
+        self.pickerView.selectRow(5, inComponent: 0, animated: true)
         
         txtName.layer.cornerRadius = 6.0
         txtName.layer.borderColor = redColor.CGColor

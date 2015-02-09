@@ -10,7 +10,7 @@ import UIKit
 
 class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
 
-    var types = ["A Device","ABC Device","ZA Device","FGHJ HH Device","ZX Device5"]
+    var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
 
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -20,7 +20,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         super.viewDidLoad()
 
         
-        self.pickerView.selectRow(2, inComponent: 0, animated: true)
+        self.pickerView.selectRow(5, inComponent: 0, animated: true)
 
         txtName.layer.cornerRadius = 6.0
         txtName.layer.borderColor = redColor.CGColor

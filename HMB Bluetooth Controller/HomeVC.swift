@@ -11,7 +11,12 @@ import UIKit
 class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
     
-    var rooms = ["room1":"room", "room2":"room", "room3":"room", "room4":"room","room5":"room"]
+
+    // NOTE "FLUR" room image not available
+    
+    var roomsType = ["BAD", "WC", "KINDERZIMMER", "BALKON", "BÜRO", "KELLER", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
+    
+    var rooms = ["room1":"BAD", "room2":"KINDERZIMMER", "room3":"BALKON", "room4":"WC","room5":"ESSZIMMER"]
 
     var selectedRoomName : String!
     
@@ -36,8 +41,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         ]
         self.navigationItem.rightBarButtonItems = barButtons
         
-
-        
     }
     
     
@@ -51,15 +54,15 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the room image
-        cell.img.image = UIImage(named: rooms.values.array[indexPath.row])
+                
+        cell.img.image = UIImage(named: rooms.values.array[indexPath.row]).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+
+        cell.img.tintColor = UIColor.lightGrayColor()
         
         // select the room name
         cell.lblName.text = rooms.keys.array[indexPath.row]
-        
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
-        
-//        cell.layer.borderColor = UIColor.grayColor().CGColor
-//        cell.layer.borderWidth = 1.0
+
         
         //cell.backgroundColor = UIColor.grayColor()
         

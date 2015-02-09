@@ -13,6 +13,8 @@ class RoomCell: UICollectionViewCell {
     
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblButtom: UILabel!
+    @IBOutlet weak var lblRight: UILabel!
     @IBOutlet weak var badge: UIImageView!
     
 }

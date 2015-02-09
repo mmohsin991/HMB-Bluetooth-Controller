@@ -59,6 +59,14 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         cell.img.tintColor = UIColor.lightGrayColor()
         
+        // set badge
+        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        // set bluetooth
+        if indexPath.row == 1 || indexPath.row == 4 {
+            cell.badge.tintColor = redColor
+        }
+        
         // select the room name
         cell.lblName.text = rooms.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)

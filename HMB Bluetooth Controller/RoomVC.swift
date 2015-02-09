@@ -109,6 +109,13 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.lblName.text = devices.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
+        // set badge
+        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        if indexPath.row == 0 || indexPath.row == 2 {
+            cell.badge.tintColor = redColor
+        }
+        
         
         //cell.backgroundColor = UIColor.grayColor()
         
@@ -153,7 +160,16 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
-        popoverMenuViewController?.sourceRect = CGRect(x: 30, y: 100, width: 260, height: 340)
+
+        
+        // calculate center for popover
+        let x = self.view.center.x - 130.0
+        let y = self.view.center.y - 170.0
+        
+        popoverMenuViewController?.sourceRect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: 260.0, height: 340.0))
+
+        
+        //popoverMenuViewController?.sourceRect = CGRect(x: 65.0, y: self.view.frame.width/3.2, width: 260.0, height: 340.0)
         
 
         presentViewController( menuViewController!, animated: true, completion: nil)

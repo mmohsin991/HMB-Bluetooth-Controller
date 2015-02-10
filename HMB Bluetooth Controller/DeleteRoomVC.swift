@@ -21,10 +21,12 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
 
         
         //Set navigation bar image
-        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
-        logoImageView.image = UIImage(named: "Logo.png")
-        logoImageView.contentMode = .ScaleAspectFit
-        self.navigationItem.titleView = logoImageView
+        let logoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        logoButton.setImage(UIImage(named:"Logo.png"), forState: UIControlState.Normal)
+       // logoButton.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
+        logoButton.contentMode = UIViewContentMode.Center
+        logoButton.addTarget(self, action: "lanchWebsite", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.titleView = logoButton
         
     
     }
@@ -156,6 +158,13 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         
     }
     
+    
+    func lanchWebsite(){
+        var url  = NSURL(string: "http://shop.hmb-tec.de/")
+        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
+            UIApplication.sharedApplication().openURL(url!)
+        }
+    }
 }
 
 

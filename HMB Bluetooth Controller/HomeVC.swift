@@ -25,13 +25,18 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // just for center the logo
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView(frame: (CGRect(x: 0, y: 0, width: self.view.frame.size.width/3.555, height: 30))))
         
+        let logoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        logoButton.setImage(UIImage(named:"Logo.png"), forState: UIControlState.Normal)
+        logoButton.addTarget(self, action: "lanchWebsite", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.titleView = logoButton
+        
+//        //Set navigation bar image
+//        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
+//        logoImageView.image = UIImage(named: "Logo.png")
+//        logoImageView.contentMode = .ScaleAspectFit
+//        self.navigationItem.titleView = logoImageView
 
-        //Set navigation bar image
-        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
-        logoImageView.image = UIImage(named: "Logo.png")
-        logoImageView.contentMode = .ScaleAspectFit
-        self.navigationItem.titleView = logoImageView
-
+        
         
         //Set navigation bar button
         var barButtons = [
@@ -145,6 +150,13 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     func preference() {
         performSegueWithIdentifier("preferenceSeg", sender: self)
+    }
+    
+    func lanchWebsite(){
+        var url  = NSURL(string: "http://shop.hmb-tec.de/")
+        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
+            UIApplication.sharedApplication().openURL(url!)
+        }
     }
     
     

@@ -15,7 +15,7 @@ protocol AddDeviceDelegate{
     
 }
 
-class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate  {
 
     var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
 
@@ -70,6 +70,11 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         //lableHeading.text = names[row]
     }
     
+    // dismiss keyboard when press return key
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     
 

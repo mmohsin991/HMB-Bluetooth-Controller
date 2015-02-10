@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateDeviceVC: UIViewController {
+class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var imgDevice: UIImageView!
     @IBOutlet weak var txtName: UITextField!
@@ -57,7 +57,9 @@ class UpdateDeviceVC: UIViewController {
     
     @IBAction func valueChanged(sender: UITextField) {
         devicesGloble[sender.text!] = imgDeviceVarString
-        devicesGloble.removeValueForKey(nameVAR)
+        if sender.text! != nameVAR{
+            devicesGloble.removeValueForKey(nameVAR)
+        }
         nameVAR = sender.text!
         
         self.view.endEditing(true)
@@ -112,5 +114,6 @@ class UpdateDeviceVC: UIViewController {
         }
         return 0
     }
+
     
 }

@@ -15,7 +15,7 @@ protocol AddRoomDelegate{
     
 }
 
-class AddRoomVC: UIViewController {
+class AddRoomVC: UIViewController, UITextFieldDelegate {
 
     var types = ["BAD", "WC","KELLER", "KINDERZIMMER", "BALKON", "BURO", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
 
@@ -83,6 +83,12 @@ class AddRoomVC: UIViewController {
     //
     //    }
     
+    
+    // dismiss keyboard when press return key
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     @IBAction func done(sender: UIBarButtonItem) {

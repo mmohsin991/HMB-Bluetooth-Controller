@@ -56,7 +56,10 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func valueChanged(sender: UITextField) {
         roomsGloble[sender.text!] = imgRoomVarString
-        roomsGloble.removeValueForKey(nameVAR)
+        if sender.text! != nameVAR{
+            roomsGloble.removeValueForKey(nameVAR)
+        }
+
         nameVAR = sender.text!
         
         self.view.endEditing(true)
@@ -98,7 +101,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
 
     // dismiss keyboard when press return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.txtName.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     

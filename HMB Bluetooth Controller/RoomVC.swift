@@ -101,6 +101,10 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.img.image = UIImage(named: devicesGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
+        if indexPath.row == 1 || indexPath.row == 2 {
+            cell.img.tintColor = redColor
+        }
+
         
         // select the device name
         cell.lblName.text = devicesGloble.keys.array[indexPath.row]
@@ -109,7 +113,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // set badge
         cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
-        if indexPath.row == 0 || indexPath.row == 2 {
+        if indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 {
             cell.badge.tintColor = UIColor.blueColor()
         }
         

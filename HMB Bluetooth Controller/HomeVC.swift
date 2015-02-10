@@ -64,12 +64,15 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
 
         cell.img.tintColor = UIColor.lightGrayColor()
+        if indexPath.row == 1 || indexPath.row == 4 {
+            cell.img.tintColor = redColor
+        }
         
         // set badge
         cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         // set bluetooth
-        if indexPath.row == 1 || indexPath.row == 4 {
+        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 4 {
             cell.badge.tintColor = UIColor.blueColor()
         }
         

@@ -8,11 +8,29 @@
 
 import UIKit
 
-class DeleteRoomVC: UITableViewController {
+@objc protocol DeleteUpdateRoom{
+    func deleteRoom(name : String)
+    optional func updateRoom(name : String, type: String)
+    
+}
+
+class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        //Set navigation bar button
+//        var barButton = UIBarButtonItem(image: UIImage(named: "Settings.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), style: .Plain, target: self, action: "preference")
+
+//        self.navigationItem.rightBarButtonItem = barButton
+        
+        //Set navigation bar image
+        let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
+        logoImageView.image = UIImage(named: "Logo.png")
+        logoImageView.contentMode = .ScaleAspectFit
+        self.navigationItem.titleView = logoImageView
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,7 +54,7 @@ class DeleteRoomVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return roomsTypeGloble.count
+        return roomsGloble.count
     }
 
     
@@ -45,15 +63,95 @@ class DeleteRoomVC: UITableViewController {
 
         // Configure the cell...
         
-        cell.lblName.text = roomsTypeGloble[indexPath.row]
-        cell.delegate = tableView
+        // set the delete icon
+        cell.btnDelete.setImage(UIImage(named: "delete")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        cell.btnDelete.imageView?.tintColor = UIColor.redColor()
+        
+        cell.btnUpdate.setImage(UIImage(named: "update")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        cell.btnUpdate.imageView?.tintColor = UIColor.blueColor()
+        
+        
+        
+        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
+        cell.delegate = self
         cell.index = indexPath.row
 
         return cell
     }
 
 
+     func deleteRoom(name: String) {
+        let deleteAlert = UIAlertController(title: "DELETE!", message:  "are you sure to delete room \"\(name)\"?", preferredStyle: .Alert)
 
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .Default, handler: nil)
+        let deleteAction = UIAlertAction(title: "DELETE", style: UIAlertActionStyle.Default) { (
+            aletAction) -> Void in
+            roomsGloble.removeValueForKey(name)
+            println("delete room: \(name)")
+            self.tableView.reloadData()
+            
+        }
+        
+        deleteAlert.addAction(cancelAction)
+        deleteAlert.addAction(deleteAction)
+        
+        
+        self.presentViewController(deleteAlert, animated: true, completion: nil)
+
+    }
+    
+    func preference() {
+        performSegueWithIdentifier("preferenceSeg", sender: self)
+    }
+    
+    
+    
+    func updateRoom(name: String, type: String) {
+        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateRoomVCID") as? UpdateRoomVC
+        
+        
+        menuViewController?.modalPresentationStyle = .Popover
+        menuViewController?.preferredContentSize = CGSizeMake(260, 340)
+        
+        menuViewController?.imgRoomVarString = type
+        menuViewController?.nameVAR = name
+        menuViewController?.tableView = self.tableView
+        
+        let popoverMenuViewController = menuViewController?.popoverPresentationController
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+        popoverMenuViewController?.delegate = self
+        popoverMenuViewController?.sourceView = self.view
+        
+        
+        // calculate center for popover
+        let x = self.view.center.x - 130.0
+        let y = self.view.center.y - 170.0
+        
+        popoverMenuViewController?.sourceRect = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: 260.0, height: 340.0))
+        
+        
+        //popoverMenuViewController?.sourceRect = CGRect(x: 65.0, y: self.view.frame.width/3.2, width: 260.0, height: 340.0)
+        
+        
+        if menuViewController != nil {
+            self.presentViewController( menuViewController!, animated: true, completion: nil)
+
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+
+    }
+    
+    
 }
 
 
@@ -61,38 +159,23 @@ class DeleteRoomCell : UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnUpdate: UIButton!
     
-    var delegate: UITableView!
     var index : Int!
+    var type = String()
+    
+    var delegate : DeleteUpdateRoom!
     
     @IBAction func deleteRoom(sender: UIButton) {
-
+        
+        delegate.deleteRoom(lblName.text!)
         
         
-        var errorAlert = UIAlertController(title: "Error!", message: "", preferredStyle: .Alert)
-        var errorAction = UIAlertAction(title: "Cancle", style: .Default, handler: nil)
-            
-            errorAlert.message = "are you sure to delete room \"\(self.lblName.text)\"?"
-            
-            errorAlert.addAction(errorAction)
-
-
-        
-        UIAlertAction(title: "Delete", style: .Default) { (alert) -> Void in
-            println(self.lblName.text)
-            println(sender.titleLabel?.text)
-            roomsTypeGloble.removeAtIndex(self.index)
-            self.delegate.reloadData()
-        }
-        
-        
-//        self.presentViewController(errorAlert, animated: true, completion: nil)
-     
-        
-//        // update UI in main thread
-//        dispatch_sync(dispatch_get_main_queue()) {
-//            self.presentViewController(errorAlert, animated: true, completion: nil)
-//    }
     }
+    @IBAction func updateRoom(sender: AnyObject) {
+        delegate.updateRoom!(lblName.text!, type: roomsGloble[lblName.text!]!)
+    }
+    
+    
     
 }

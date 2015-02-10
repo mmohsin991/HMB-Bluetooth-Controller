@@ -102,7 +102,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the device image
-        cell.img.image = UIImage(named: devices.values.array[indexPath.row]).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: devices.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
         
@@ -111,10 +111,10 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
         // set badge
-        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         if indexPath.row == 0 || indexPath.row == 2 {
-            cell.badge.tintColor = redColor
+            cell.badge.tintColor = UIColor.blueColor()
         }
         
         
@@ -138,22 +138,12 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("deviceVCID") as? DeviceVC
         
         
-        // set the tab bar shado
-
-        
         menuViewController?.modalPresentationStyle = .Popover
         menuViewController?.preferredContentSize = CGSizeMake(260, 340)
         let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as DeviceCell
         
         menuViewController?.imgDeviceVARString = selectedDeviceImgName
         menuViewController?.nameVAR = selectedDeviceName
-//        menuViewController?.view.layer.cornerRadius = 1.0
-//        menuViewController?.view.layer.shadowColor = UIColor.grayColor().CGColor
-//        menuViewController?.view.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
-//        menuViewController?.view.layer.shadowOpacity = 0.8
-//        menuViewController?.view.layer.shadowRadius = 5.0
-//        menuViewController?.view.layer.masksToBounds = true
-        
 
 
         
@@ -177,6 +167,15 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         
     }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    
+    
+    
+    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
@@ -210,9 +209,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         self.deviceCollectionView.reloadData()
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
+
     
     func addDevice() {
 

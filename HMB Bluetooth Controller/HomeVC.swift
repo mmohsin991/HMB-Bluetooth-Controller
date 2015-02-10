@@ -11,14 +11,12 @@ import UIKit
 class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,AddRoomDelegate  {
     
     
-    @IBOutlet weak var HomeCollectionView: UICollectionView!
+    @IBOutlet weak var homeCollectionView: UICollectionView!
 
     // NOTE "FLUR" room image not available
     
     var roomsType = roomsTypeGloble
     
-    var rooms = ["ROOM1":"BAD", "ROOM2":"KINDERZIMMER", "ROOM3":"BALKON", "ROOM4":"BURO","ROOM5":"ESSZIMMER"]
-
     var selectedRoomName : String!
     
     override func viewDidLoad() {
@@ -44,9 +42,13 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        self.homeCollectionView.reloadData()
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rooms.keys.array.count
+        return roomsGloble.keys.array.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -56,20 +58,20 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         // select the room image
                 
-        cell.img.image = UIImage(named: rooms.values.array[indexPath.row]).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: roomsGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 
         cell.img.tintColor = UIColor.lightGrayColor()
         
         // set badge
-        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         // set bluetooth
         if indexPath.row == 1 || indexPath.row == 4 {
-            cell.badge.tintColor = redColor
+            cell.badge.tintColor = UIColor.blueColor()
         }
         
         // select the room name
-        cell.lblName.text = rooms.keys.array[indexPath.row]
+        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
 
         //cell.lblBottom.frame = CGRect(x: collectionView.frame.origin.x, y: collectionView.frame.origin.x+collectionViewWidth, width: collectionView.bounds.size.width, height: 1)
@@ -84,7 +86,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         // select the room
-        selectedRoomName = self.rooms.keys.array[indexPath.row]
+        selectedRoomName = roomsGloble.keys.array[indexPath.row]
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell
         //cell.backgroundColor = UIColor.lightGrayColor()
@@ -110,7 +112,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             let detailView = segue.destinationViewController as RoomVC
             detailView.selectedRoomName = self.selectedRoomName
             let selectedRow = sender as Int
-            detailView.selectedRoomNumber = [selectedRow:self.rooms.keys.array.count]
+            detailView.selectedRoomNumber = [selectedRow:roomsGloble.keys.array.count]
         }
         
         if segue.identifier == "addRoomSeg" {
@@ -125,10 +127,10 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
 
     func aadRoom(name: String, type: String, VC : UIViewController){
-        self.rooms[name] = type
+        roomsGloble[name] = type
         VC.dismissViewControllerAnimated(true, completion: nil)
         
-        self.HomeCollectionView.reloadData()
+        self.homeCollectionView.reloadData()
     }
     
     

@@ -28,10 +28,13 @@ class DeviceVC: UIViewController {
         
         println(nameVAR)
         
-        let img = UIImage(named: self.imgDeviceVARString).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        
-        self.imgDevice.image = img
-        self.imgDevice.tintColor = redColor
+        if UIImage(named: self.imgDeviceVARString) != nil {
+            let img = UIImage(named: self.imgDeviceVARString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            
+            self.imgDevice.image = img
+            self.imgDevice.tintColor = redColor
+        }
+
 //        self.imgDevice.tintColor = redColor
         
         self.lblName.text = self.nameVAR

@@ -28,6 +28,8 @@
 		423D792B1A8773CB0054A2FA /* DeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D792A1A8773CB0054A2FA /* DeviceVC.swift */; };
 		42665D791A8A1AC9004A4483 /* UpdateRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42665D781A8A1AC9004A4483 /* UpdateRoomVC.swift */; };
 		42B922C21A8A2806007BAF7D /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B922C11A8A2806007BAF7D /* test.storyboard */; };
+		42B922C41A8A54CA007BAF7D /* DeleteDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B922C31A8A54CA007BAF7D /* DeleteDeviceVC.swift */; };
+		42B922C61A8A5547007BAF7D /* UpdateDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B922C51A8A5547007BAF7D /* UpdateDeviceVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		423D792A1A8773CB0054A2FA /* DeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceVC.swift; sourceTree = "<group>"; };
 		42665D781A8A1AC9004A4483 /* UpdateRoomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateRoomVC.swift; sourceTree = "<group>"; };
 		42B922C11A8A2806007BAF7D /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
+		42B922C31A8A54CA007BAF7D /* DeleteDeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteDeviceVC.swift; sourceTree = "<group>"; };
+		42B922C51A8A5547007BAF7D /* UpdateDeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateDeviceVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +171,10 @@
 		42B922C01A8A2521007BAF7D /* Delete and Update */ = {
 			isa = PBXGroup;
 			children = (
-				42665D781A8A1AC9004A4483 /* UpdateRoomVC.swift */,
 				420CB5771A893F6F006C6B40 /* DeleteRoomVC.swift */,
+				42665D781A8A1AC9004A4483 /* UpdateRoomVC.swift */,
+				42B922C31A8A54CA007BAF7D /* DeleteDeviceVC.swift */,
+				42B922C51A8A5547007BAF7D /* UpdateDeviceVC.swift */,
 			);
 			name = "Delete and Update";
 			sourceTree = "<group>";
@@ -288,6 +294,8 @@
 				42665D791A8A1AC9004A4483 /* UpdateRoomVC.swift in Sources */,
 				421DFBC11A8628580098E582 /* RoomCell.swift in Sources */,
 				4234DFB91A86AE9000A2F725 /* TabBarController.swift in Sources */,
+				42B922C41A8A54CA007BAF7D /* DeleteDeviceVC.swift in Sources */,
+				42B922C61A8A5547007BAF7D /* UpdateDeviceVC.swift in Sources */,
 				4234DFB71A86AD4700A2F725 /* EmptyScreen2VC.swift in Sources */,
 				421DFB9C1A8625FA0098E582 /* AppDelegate.swift in Sources */,
 			);

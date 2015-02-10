@@ -1,5 +1,5 @@
 //
-//  UpdateRoom.swift
+//  UpdateDeviceVC.swift
 //  HMB Bluetooth Controller
 //
 //  Created by Mohsin on 10/02/2015.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class UpdateRoomVC: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var imgRoom: UIImageView!
+class UpdateDeviceVC: UIViewController {
+
+    @IBOutlet weak var imgDevice: UIImageView!
     @IBOutlet weak var txtName: UITextField!
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -18,11 +18,12 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     
     
     
-    var imgRoomVarString = String()
+    var imgDeviceVarString = String()
     var nameVAR = String()
 
-    var types = ["BAD", "WC","KELLER", "KINDERZIMMER", "BALKON", "BURO", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
-
+    
+    var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
+    
     var tableView : UITableView!
     
     override func viewDidLoad() {
@@ -30,7 +31,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
-        self.pickerView.selectRow(findIndex(types, value: imgRoomVarString), inComponent: 0, animated: true)
+        self.pickerView.selectRow(findIndex(types, value: imgDeviceVarString), inComponent: 0, animated: true)
         
         txtName.layer.cornerRadius = 6.0
         txtName.layer.borderColor = redColor.CGColor
@@ -39,24 +40,24 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         
         println(nameVAR)
         
-        if UIImage(named: self.imgRoomVarString) != nil {
-            let img = UIImage(named: self.imgRoomVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-            self.imgRoom.image = img
-
+        if UIImage(named: self.imgDeviceVarString) != nil {
+            let img = UIImage(named: self.imgDeviceVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            self.imgDevice.image = img
+            
         }
         
-        self.imgRoom.tintColor = redColor
+        self.imgDevice.tintColor = redColor
         //        self.imgDevice.tintColor = redColor
         
         self.txtName.text = self.nameVAR
         
     }
     
-
+    
     
     @IBAction func valueChanged(sender: UITextField) {
-        roomsGloble[sender.text!] = imgRoomVarString
-        roomsGloble.removeValueForKey(nameVAR)
+        devicesGloble[sender.text!] = imgDeviceVarString
+        devicesGloble.removeValueForKey(nameVAR)
         nameVAR = sender.text!
         
         self.view.endEditing(true)
@@ -65,7 +66,6 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
             tableView.reloadData()
         }
         
-        println(roomsGloble)
         
         view.endEditing(true)
     }
@@ -93,9 +93,9 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
-        roomsGloble[self.nameVAR] = types[row]
+        devicesGloble[self.nameVAR] = types[row]
     }
-
+    
     // dismiss keyboard when press return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.txtName.resignFirstResponder()
@@ -103,7 +103,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    // helper function that return the index of the value in array 
+    // helper function that return the index of the value in array
     func findIndex(array : [String], value : String)-> Int {
         for x in 0..<array.count {
             if array[x] == value {

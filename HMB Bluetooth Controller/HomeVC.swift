@@ -57,8 +57,11 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the room image
-                
-        cell.img.image = UIImage(named: roomsGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        if UIImage(named: roomsGloble.values.array[indexPath.row]) != nil {
+                    cell.img.image = UIImage(named: roomsGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        }
+
 
         cell.img.tintColor = UIColor.lightGrayColor()
         

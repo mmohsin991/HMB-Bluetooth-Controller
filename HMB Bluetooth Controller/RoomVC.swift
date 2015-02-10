@@ -22,13 +22,9 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var selectedRoomName : String!
     var selectedRoomNumber : [Int:Int]!
 
-    var deviceTypes :[String] = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
-    
     @IBOutlet weak var lblRoomNumber: UILabel!
     @IBOutlet weak var deviceCollectionView: UICollectionView!
-    
-    var devices = ["DEVICE1": "LAMPE","DEVICE2": "BACKOFEN","DEVICE3": "VENTILATOR","DEVICE4": "MARKISE","DEVICE5": "STECKDOSE"]
-    
+
     var selectedDeviceName : String!
     
     override func viewDidLoad() {
@@ -92,7 +88,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return devices.keys.array.count
+        return devicesGloble.keys.array.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -102,12 +98,12 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the device image
-        cell.img.image = UIImage(named: devices.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: devicesGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
         
         // select the device name
-        cell.lblName.text = devices.keys.array[indexPath.row]
+        cell.lblName.text = devicesGloble.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
         // set badge
@@ -128,8 +124,8 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // select the device
-        selectedDeviceName = self.devices.keys.array[indexPath.row]
-        let selectedDeviceImgName = self.devices.values.array[indexPath.row]
+        selectedDeviceName = devicesGloble.keys.array[indexPath.row]
+        let selectedDeviceImgName = devicesGloble.values.array[indexPath.row]
 
         
         //let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
@@ -203,7 +199,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     func addDevice(name: String, type: String, VC : UIViewController){
-        self.devices[name] = type
+        devicesGloble[name] = type
         VC.dismissViewControllerAnimated(true, completion: nil)
         
         self.deviceCollectionView.reloadData()

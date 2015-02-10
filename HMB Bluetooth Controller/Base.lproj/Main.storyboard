@@ -353,7 +353,67 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVX-kE-CrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1587" y="-491"/>
+            <point key="canvasLocation" x="1590" y="-515"/>
+        </scene>
+        <!--Delete DeviceVC-->
+        <scene sceneID="E3w-Ki-KRz">
+            <objects>
+                <tableViewController id="CrI-Nl-Hmd" customClass="DeleteDeviceVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="YHA-ng-7qq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="asJ-66-fbW" customClass="DeleteDeviceCell" customModule="HMB_Bluetooth_Controller" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="asJ-66-fbW" id="Npp-iX-Bb4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uD-2t-Uqm">
+                                            <rect key="frame" x="8" y="9" width="192" height="52"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jf-hA-y6Q">
+                                            <rect key="frame" x="266" y="13" width="46" height="44"/>
+                                            <state key="normal" backgroundImage="Remp">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteRoom:" destination="asJ-66-fbW" eventType="touchUpInside" id="6TY-EF-bc7"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grp-Ck-vEg">
+                                            <rect key="frame" x="212" y="13" width="46" height="44"/>
+                                            <state key="normal" backgroundImage="Remp">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="updateRoom:" destination="asJ-66-fbW" eventType="touchUpInside" id="Cjq-wM-O2s"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnDelete" destination="9jf-hA-y6Q" id="glv-YH-lVx"/>
+                                    <outlet property="btnUpdate" destination="grp-Ck-vEg" id="UgZ-Ud-ddL"/>
+                                    <outlet property="lblName" destination="2uD-2t-Uqm" id="XGy-tk-un5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CrI-Nl-Hmd" id="99m-e1-bUT"/>
+                            <outlet property="delegate" destination="CrI-Nl-Hmd" id="l9u-ts-HVb"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5B-Qn-cdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="-515"/>
         </scene>
         <!--Empty Screen1VC-->
         <scene sceneID="EG9-aR-lXV">
@@ -394,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0P-fZ-5KS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962" y="-497"/>
+            <point key="canvasLocation" x="1161" y="-515"/>
         </scene>
         <!--ADD ROOM-->
         <scene sceneID="dmq-hC-BVk">
@@ -975,6 +1035,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="nhD-bM-XUG"/>
+                    <connections>
+                        <segue destination="CrI-Nl-Hmd" kind="show" identifier="roomDevicesSeg" id="gdv-5N-ghh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2k-me-IVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1039,10 +1102,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Akp-ZK-2ON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="-1218"/>
+            <point key="canvasLocation" x="342" y="-1072"/>
+        </scene>
+        <!--Update DeviceVC-->
+        <scene sceneID="7uP-HS-2ZA">
+            <objects>
+                <viewController storyboardIdentifier="UpdateDeviceVCID" id="7fl-p3-6Nz" customClass="UpdateDeviceVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G2w-EG-VVb"/>
+                        <viewControllerLayoutGuide type="bottom" id="X5d-oZ-ZWb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gd9-rH-U6v">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DIVERSES" translatesAutoresizingMaskIntoConstraints="NO" id="SqY-Rp-LDu">
+                                <rect key="frame" x="80" y="20" width="100" height="100"/>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pPA-ZF-lVp">
+                                <rect key="frame" x="30" y="146" width="200" height="200"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7fl-p3-6Nz" id="wFq-Hh-n2G"/>
+                                    <outlet property="delegate" destination="7fl-p3-6Nz" id="pJC-tW-bze"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXU-2W-aUd">
+                                <rect key="frame" x="30" y="231" width="202" height="1"/>
+                                <color key="backgroundColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI4-fz-rgQ">
+                                <rect key="frame" x="29" y="261" width="202" height="1"/>
+                                <color key="backgroundColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A99-E8-PyX">
+                                <rect key="frame" x="29" y="128" width="201" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="7fl-p3-6Nz" eventType="editingDidEnd" id="1XP-jv-Mem"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="260" height="340"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="260" height="340"/>
+                    <connections>
+                        <outlet property="imgRoom" destination="SqY-Rp-LDu" id="Lux-Ul-jtp"/>
+                        <outlet property="pickerView" destination="pPA-ZF-lVp" id="Cr0-0O-6TL"/>
+                        <outlet property="txtName" destination="A99-E8-PyX" id="arG-CX-eC9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGb-b1-aH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="-1072"/>
         </scene>
     </scenes>
     <resources>
+        <image name="DIVERSES" width="112" height="112"/>
         <image name="QR" width="87" height="90"/>
         <image name="Remp" width="42" height="42"/>
         <image name="delete" width="35" height="42"/>

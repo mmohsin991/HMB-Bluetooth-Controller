@@ -1,5 +1,5 @@
 //
-//  DeleteRoomVC.swift
+//  DeleteDeviceVC.swift
 //  HMB Bluetooth Controller
 //
 //  Created by Mohsin on 10/02/2015.
@@ -8,17 +8,21 @@
 
 import UIKit
 
-@objc protocol DeleteUpdateRoom{
+
+@objc protocol DeleteUpdateDevice{
     func deleteRoom(name : String)
     optional func updateRoom(name : String, type: String)
     
 }
 
-class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentationControllerDelegate {
+class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresentationControllerDelegate {
 
+    var roomName: String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         //Set navigation bar image
         let logoImageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
@@ -26,32 +30,32 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         logoImageView.contentMode = .ScaleAspectFit
         self.navigationItem.titleView = logoImageView
         
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return roomsGloble.count
+        return devicesGloble.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as DeleteRoomCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as DeleteDeviceCell
+        
         // Configure the cell...
         
         // set the delete icon
@@ -63,21 +67,21 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         
         
         
-        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
+        cell.lblName.text = devicesGloble.keys.array[indexPath.row]
         cell.delegate = self
         cell.index = indexPath.row
-
+        
         return cell
     }
-
-
-     func deleteRoom(name: String) {
-        let deleteAlert = UIAlertController(title: "DELETE!", message:  "Are you sure to delete Room \"\(name)\"?", preferredStyle: .Alert)
-
+    
+    
+    func deleteRoom(name: String) {
+        let deleteAlert = UIAlertController(title: "DELETE!", message:  "Are you sure to delete Device \"\(name)\"?", preferredStyle: .Alert)
+        
         let cancelAction = UIAlertAction(title: "CANCEL", style: .Default, handler: nil)
         let deleteAction = UIAlertAction(title: "DELETE", style: UIAlertActionStyle.Default) { (
             aletAction) -> Void in
-            roomsGloble.removeValueForKey(name)
+            devicesGloble.removeValueForKey(name)
             println("delete room: \(name)")
             self.tableView.reloadData()
             
@@ -88,7 +92,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         
         
         self.presentViewController(deleteAlert, animated: true, completion: nil)
-
+        
     }
     
     func preference() {
@@ -98,13 +102,13 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     func updateRoom(name: String, type: String) {
-        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateRoomVCID") as? UpdateRoomVC
+        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateDeviceVCID") as? UpdateDeviceVC
         
         
         menuViewController?.modalPresentationStyle = .Popover
         menuViewController?.preferredContentSize = CGSizeMake(260, 340)
         
-        menuViewController?.imgRoomVarString = type
+        menuViewController?.imgDeviceVarString = type
         menuViewController?.nameVAR = name
         menuViewController?.tableView = self.tableView
         
@@ -126,7 +130,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         
         if menuViewController != nil {
             self.presentViewController( menuViewController!, animated: true, completion: nil)
-
+            
         }
     }
     
@@ -138,28 +142,15 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedRoomName = (tableView.cellForRowAtIndexPath(indexPath) as DeleteRoomCell).lblName.text
-
-        performSegueWithIdentifier("roomDevicesSeg", sender: selectedRoomName)
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue == "roomDevicesSeg" {
-            let descVC = segue.destinationViewController as DeleteDeviceVC
-            let selectedRoomName = sender as String
-
-            descVC.roomName = selectedRoomName
-        }
-
         
     }
+    
     
 }
 
 
-class DeleteRoomCell : UITableViewCell {
+class DeleteDeviceCell : UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
@@ -168,7 +159,7 @@ class DeleteRoomCell : UITableViewCell {
     var index : Int!
     var type = String()
     
-    var delegate : DeleteUpdateRoom!
+    var delegate : DeleteDeviceVC!
     
     @IBAction func deleteRoom(sender: UIButton) {
         
@@ -177,9 +168,8 @@ class DeleteRoomCell : UITableViewCell {
         
     }
     @IBAction func updateRoom(sender: AnyObject) {
-        delegate.updateRoom!(lblName.text!, type: roomsGloble[lblName.text!]!)
+        delegate.updateRoom(lblName.text!, type: devicesGloble[lblName.text!]!)
     }
-    
     
     
 }

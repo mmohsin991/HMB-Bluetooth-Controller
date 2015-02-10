@@ -4,42 +4,49 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="LiO-9W-yeq">
+        <!--Update DeviceVC-->
+        <scene sceneID="Nhm-Eo-pzT">
             <objects>
-                <viewController id="Dqf-eW-lpe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateDeviceVCID" id="l5w-Vw-gNg" customClass="UpdateDeviceVC" customModule="HMB_Bluetooth_Controller" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5mh-Ju-k4Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="4qv-et-sml"/>
+                        <viewControllerLayoutGuide type="top" id="128-7Y-2DR"/>
+                        <viewControllerLayoutGuide type="bottom" id="e85-TJ-76Z"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HVc-Yo-88K">
+                    <view key="view" contentMode="scaleToFill" id="jCn-AK-m4Q">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="340"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="rOV-c9-jVa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DIVERSES" translatesAutoresizingMaskIntoConstraints="NO" id="Pda-9Q-cGY">
                                 <rect key="frame" x="80" y="20" width="100" height="100"/>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFy-Gr-wfi">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Zf-ea-TOs">
                                 <rect key="frame" x="30" y="146" width="200" height="200"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="l5w-Vw-gNg" id="5eS-hJ-Y5O"/>
+                                    <outlet property="delegate" destination="l5w-Vw-gNg" id="Vt5-oz-gXG"/>
+                                </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3w7-nC-gRt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cN9-1W-T9i">
                                 <rect key="frame" x="30" y="231" width="202" height="1"/>
                                 <color key="backgroundColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib2-lY-5bz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSE-KQ-6tK">
                                 <rect key="frame" x="29" y="261" width="202" height="1"/>
                                 <color key="backgroundColor" red="0.68627450980000004" green="0.098039215690000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yat-1A-NMt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FE9-MK-55W">
                                 <rect key="frame" x="29" y="128" width="201" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="l5w-Vw-gNg" eventType="editingDidEnd" id="6rC-fu-8ij"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,18 +56,17 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="260" height="340"/>
                     <connections>
-                        <outlet property="imgDevice" destination="rOV-c9-jVa" id="eB2-Z0-El2"/>
-                        <outlet property="imgRoom" destination="rOV-c9-jVa" id="4lN-mF-OT0"/>
-                        <outlet property="pickerView" destination="oFy-Gr-wfi" id="yFY-xE-Hmc"/>
-                        <outlet property="txtName" destination="Yat-1A-NMt" id="jZr-DJ-7OR"/>
+                        <outlet property="imgRoom" destination="Pda-9Q-cGY" id="PqH-LQ-fZR"/>
+                        <outlet property="pickerView" destination="8Zf-ea-TOs" id="ur9-96-uqj"/>
+                        <outlet property="txtName" destination="FE9-MK-55W" id="9jw-dO-5Gj"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fkB-KV-USw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aaU-dV-veE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="182"/>
+            <point key="canvasLocation" x="334" y="-1218"/>
         </scene>
     </scenes>
     <resources>
-        <image name="room" width="65" height="50"/>
+        <image name="DIVERSES" width="112" height="112"/>
     </resources>
 </document>

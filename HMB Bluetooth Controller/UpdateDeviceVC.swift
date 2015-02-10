@@ -96,6 +96,9 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
         devicesGloble[self.nameVAR] = types[row]
+        self.imgDevice.image = UIImage(named: types[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        tableView.reloadData()
+
     }
     
     // dismiss keyboard when press return key

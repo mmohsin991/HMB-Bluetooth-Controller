@@ -97,6 +97,8 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
         roomsGloble[self.nameVAR] = types[row]
+        self.imgRoom.image = UIImage(named: types[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        tableView.reloadData()
     }
 
     // dismiss keyboard when press return key

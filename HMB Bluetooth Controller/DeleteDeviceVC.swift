@@ -64,9 +64,10 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         cell.btnUpdate.setImage(UIImage(named: "update")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnUpdate.imageView?.tintColor = UIColor.blueColor()
         
-        
-        
         cell.lblName.text = devicesGloble.keys.array[indexPath.row]
+        cell.img.image = UIImage(named: devicesGloble[cell.lblName.text!]!)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img?.tintColor = redColor
+
         cell.delegate = self
         cell.index = indexPath.row
         
@@ -159,6 +160,7 @@ class DeleteDeviceCell : UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var btnDelete: UIButton!
     @IBOutlet weak var btnUpdate: UIButton!
+    @IBOutlet weak var img: UIImageView!
     
     var index : Int!
     var type = String()

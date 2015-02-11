@@ -26,15 +26,6 @@ class EmptyScreen1VC: UIViewController, UIPopoverPresentationControllerDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func add(sender: AnyObject) {
-
-        var url  = NSURL(string: "http://shop.hmb-tec.de/")
-        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
-            UIApplication.sharedApplication().openURL(url!)
-        }
-
-
-    }
     
 
 

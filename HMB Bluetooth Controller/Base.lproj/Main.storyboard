@@ -454,15 +454,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDO-Va-WFe">
-                                <rect key="frame" x="161" y="251" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="add:" destination="vqS-nu-AMe" eventType="touchUpInside" id="6zf-G7-Hl7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1293,7 +1284,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DIVERSES" width="85" height="85"/>
+        <image name="DIVERSES" width="128" height="128"/>
         <image name="QR" width="87" height="90"/>
         <image name="Remp" width="42" height="42"/>
         <image name="delete" width="30" height="42"/>

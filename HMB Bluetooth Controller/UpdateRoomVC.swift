@@ -21,8 +21,6 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     var imgRoomVarString = String()
     var nameVAR = String()
 
-    var types = ["BAD", "WC","KELLER", "KINDERZIMMER", "BALKON", "BURO", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
-
     var tableView : UITableView!
     
     override func viewDidLoad() {
@@ -30,7 +28,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
-        self.pickerView.selectRow(findIndex(types, value: imgRoomVarString), inComponent: 0, animated: true)
+        self.pickerView.selectRow(findIndex(roomsTypeGloble, value: imgRoomVarString), inComponent: 0, animated: true)
         
         txtName.layer.cornerRadius = 6.0
         txtName.layer.borderColor = redColor.CGColor
@@ -87,17 +85,17 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return types.count
+        return roomsTypeGloble.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return types[row]
+        return roomsTypeGloble[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
-        roomsGloble[self.nameVAR] = types[row]
-        self.imgRoom.image = UIImage(named: types[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        roomsGloble[self.nameVAR] = roomsTypeGloble[row]
+        self.imgRoom.image = UIImage(named: roomsTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         tableView.reloadData()
     }
 

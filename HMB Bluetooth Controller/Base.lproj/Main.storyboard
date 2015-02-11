@@ -1293,10 +1293,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DIVERSES" width="75" height="75"/>
+        <image name="DIVERSES" width="85" height="85"/>
         <image name="QR" width="87" height="90"/>
         <image name="Remp" width="42" height="42"/>
-        <image name="delete" width="35" height="42"/>
+        <image name="delete" width="30" height="42"/>
         <image name="home" width="42" height="42"/>
         <image name="info" width="42" height="42"/>
         <image name="room" width="65" height="50"/>

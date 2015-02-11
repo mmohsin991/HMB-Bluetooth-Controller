@@ -22,8 +22,6 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     var nameVAR = String()
 
     
-    var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
-    
     var tableView : UITableView!
     
     override func viewDidLoad() {
@@ -31,7 +29,7 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
         
         // Do any additional setup after loading the view.
         
-        self.pickerView.selectRow(findIndex(types, value: imgDeviceVarString), inComponent: 0, animated: true)
+        self.pickerView.selectRow(findIndex(deviceTypeGloble, value: imgDeviceVarString), inComponent: 0, animated: true)
         
         txtName.layer.cornerRadius = 6.0
         txtName.layer.borderColor = redColor.CGColor
@@ -86,17 +84,17 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return types.count
+        return deviceTypeGloble.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return types[row]
+        return deviceTypeGloble[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
-        devicesGloble[self.nameVAR] = types[row]
-        self.imgDevice.image = UIImage(named: types[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        devicesGloble[self.nameVAR] = deviceTypeGloble[row]
+        self.imgDevice.image = UIImage(named: deviceTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         tableView.reloadData()
 
     }

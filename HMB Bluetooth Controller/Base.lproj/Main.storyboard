@@ -164,7 +164,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gCU-SZ-8MP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="home" id="xnA-kR-tbe">
-                        <inset key="imageInsets" minX="2" minY="4" maxX="2" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -347,9 +346,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="today" id="mCX-Qk-bvh">
-                        <inset key="imageInsets" minX="2" minY="4" maxX="2" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="info" id="mCX-Qk-bvh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVX-kE-CrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -469,9 +466,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="settings_remote" id="sPk-hH-mh8">
-                        <inset key="imageInsets" minX="2" minY="6" maxX="2" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="tool" id="sPk-hH-mh8"/>
                     <connections>
                         <outlet property="tabBarItem" destination="sPk-hH-mh8" id="wre-9Q-udT"/>
                     </connections>
@@ -856,6 +851,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="website:" destination="Yc9-mY-jcC" eventType="touchUpInside" id="lZa-Gn-Za2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -994,9 +992,7 @@
         <scene sceneID="dXi-Um-KWa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUN-h9-0pt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="delete" id="RA7-pV-qGo">
-                        <inset key="imageInsets" minX="2" minY="6" maxX="2" maxY="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="delete" id="RA7-pV-qGo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hRh-0X-jpx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1297,14 +1293,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DIVERSES" width="112" height="112"/>
+        <image name="DIVERSES" width="75" height="75"/>
         <image name="QR" width="87" height="90"/>
         <image name="Remp" width="42" height="42"/>
         <image name="delete" width="35" height="42"/>
         <image name="home" width="42" height="42"/>
+        <image name="info" width="42" height="42"/>
         <image name="room" width="65" height="50"/>
-        <image name="settings_remote" width="42" height="42"/>
-        <image name="today" width="42" height="42"/>
+        <image name="tool" width="42" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="B1q-Rr-1dX"/>

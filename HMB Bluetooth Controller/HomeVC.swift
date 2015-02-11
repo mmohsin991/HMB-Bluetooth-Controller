@@ -70,7 +70,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         cell.img.tintColor = UIColor.lightGrayColor()
         if indexPath.row == 1 || indexPath.row == 4 {
-            cell.img.tintColor = redColor
+            cell.img.tintColor = UIColor.blueColor()
         }
         
         // set badge

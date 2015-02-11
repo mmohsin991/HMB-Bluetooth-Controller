@@ -53,22 +53,40 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func valueChanged(sender: UITextField) {
-        roomsGloble[sender.text!] = imgRoomVarString
-        if sender.text! != nameVAR{
-            roomsGloble.removeValueForKey(nameVAR)
+        
+        // if room name already exist
+        if roomsGloble[sender.text!] != nil {
+            let errorAlert = UIAlertController(title: "EROOR!", message:  "The room name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
+            
+            let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
+            errorAlert.addAction(backAction)
+            self.presentViewController(errorAlert, animated: true, completion: nil)
+        }
+        else {
+            roomsGloble[sender.text!] = imgRoomVarString
+            
+            let temp = homeArchGloble[self.nameVAR]
+            
+            homeArchGloble[sender.text!] = temp
+            
+            // save the name of the room has been changed
+            selectedRoomNameGloble = sender.text!
+            
+            if sender.text! != nameVAR{
+                roomsGloble.removeValueForKey(self.nameVAR)
+                homeArchGloble.removeValueForKey(self.nameVAR)
+            }
+            
+            nameVAR = sender.text!
+            
+            self.view.endEditing(true)
+            
+            if self.tableView != nil {
+                tableView.reloadData()
+            }
+            
         }
 
-        nameVAR = sender.text!
-        
-        self.view.endEditing(true)
-        
-        if self.tableView != nil {
-            tableView.reloadData()
-        }
-        
-        println(roomsGloble)
-        
-        view.endEditing(true)
     }
     
     

@@ -377,7 +377,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="deleteRoom:" destination="asJ-66-fbW" eventType="touchUpInside" id="6TY-EF-bc7"/>
+                                                <action selector="deleteDevice:" destination="asJ-66-fbW" eventType="touchUpInside" id="hr0-Ft-6fc"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grp-Ck-vEg">
@@ -391,7 +391,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="updateRoom:" destination="asJ-66-fbW" eventType="touchUpInside" id="Cjq-wM-O2s"/>
+                                                <action selector="updateDevice:" destination="asJ-66-fbW" eventType="touchUpInside" id="ILe-FI-ttV"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-Ty-rUA">

@@ -20,7 +20,8 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     
     var imgDeviceVarString = String()
     var nameVAR = String()
-
+    var selectedRoomName = String()
+    
     
     var tableView : UITableView!
     
@@ -36,7 +37,7 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
         txtName.layer.borderWidth = 1.0
         
         
-        println(nameVAR)
+        println(selectedRoomName)
         
         if UIImage(named: self.imgDeviceVarString) != nil {
             let img = UIImage(named: self.imgDeviceVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -54,20 +55,29 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func valueChanged(sender: UITextField) {
-        devicesGloble[sender.text!] = imgDeviceVarString
-        if sender.text! != nameVAR{
-            devicesGloble.removeValueForKey(nameVAR)
+        
+        // if device name already exist in the given room
+        if homeArchGloble[selectedRoomName]![sender.text!] != nil {
+            let errorAlert = UIAlertController(title: "EROOR!", message:  "The devive name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
+            
+            let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
+            errorAlert.addAction(backAction)
+            self.presentViewController(errorAlert, animated: true, completion: nil)
         }
-        nameVAR = sender.text!
-        
-        self.view.endEditing(true)
-        
-        if self.tableView != nil {
-            tableView.reloadData()
+        else {
+            homeArchGloble[selectedRoomName]![sender.text!] = imgDeviceVarString
+            if sender.text! != nameVAR{
+                homeArchGloble[selectedRoomName]!.removeValueForKey(nameVAR)
+            }
+            nameVAR = sender.text!
+            
+            self.view.endEditing(true)
+            
+            if self.tableView != nil {
+                tableView.reloadData()
+            }
+            
         }
-        
-        
-        view.endEditing(true)
     }
     
     
@@ -93,7 +103,7 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
-        devicesGloble[self.nameVAR] = deviceTypeGloble[row]
+        homeArchGloble[selectedRoomName]![self.nameVAR] = deviceTypeGloble[row]
         self.imgDevice.image = UIImage(named: deviceTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         tableView.reloadData()
 

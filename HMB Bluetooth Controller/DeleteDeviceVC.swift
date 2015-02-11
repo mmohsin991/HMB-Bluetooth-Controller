@@ -10,20 +10,19 @@ import UIKit
 
 
 @objc protocol DeleteUpdateDevice{
-    func deleteRoom(name : String)
-    optional func updateRoom(name : String, type: String)
+    func deleteDevice(name : String)
+    optional func updateDevice(name : String, type: String)
     
 }
 
 class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresentationControllerDelegate {
 
-    var roomName: String!
+    var selectedRoomName: String!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
         //Set navigation bar image
         let logoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         logoButton.setImage(UIImage(named:"Logo.png"), forState: UIControlState.Normal)
@@ -48,7 +47,12 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return devicesGloble.count
+        if self.selectedRoomName != nil {
+            return homeArchGloble[self.selectedRoomName!]!.count
+        }
+        else{
+            return 0
+        }
     }
     
     
@@ -64,24 +68,27 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         cell.btnUpdate.setImage(UIImage(named: "update")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnUpdate.imageView?.tintColor = UIColor.blueColor()
         
-        cell.lblName.text = devicesGloble.keys.array[indexPath.row]
-        cell.img.image = UIImage(named: devicesGloble[cell.lblName.text!]!)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.lblName.text = homeArchGloble[self.selectedRoomName!]!.keys.array[indexPath.row]
+        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]!)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         cell.img?.tintColor = redColor
 
         cell.delegate = self
         cell.index = indexPath.row
         
+        cell.selectedRoomName = self.selectedRoomName
+    
+        
         return cell
     }
     
     
-    func deleteRoom(name: String) {
+    func deleteDevice(name: String) {
         let deleteAlert = UIAlertController(title: "DELETE!", message:  "Are you sure to delete Device \"\(name)\"?", preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "CANCEL", style: .Default, handler: nil)
         let deleteAction = UIAlertAction(title: "DELETE", style: UIAlertActionStyle.Default) { (
             aletAction) -> Void in
-            devicesGloble.removeValueForKey(name)
+            homeArchGloble[self.selectedRoomName!]!.removeValueForKey(name)
             println("delete room: \(name)")
             self.tableView.reloadData()
             
@@ -101,7 +108,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
     
     
     
-    func updateRoom(name: String, type: String) {
+    func updateDevice(name: String, type: String) {
         var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateDeviceVCID") as? UpdateDeviceVC
         
         
@@ -111,6 +118,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         menuViewController?.imgDeviceVarString = type
         menuViewController?.nameVAR = name
         menuViewController?.tableView = self.tableView
+        menuViewController?.selectedRoomName = self.selectedRoomName
         
         let popoverMenuViewController = menuViewController?.popoverPresentationController
         popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
@@ -164,17 +172,18 @@ class DeleteDeviceCell : UITableViewCell {
     
     var index : Int!
     var type = String()
+    var selectedRoomName = String()
     
     var delegate : DeleteDeviceVC!
     
-    @IBAction func deleteRoom(sender: UIButton) {
+    @IBAction func deleteDevice(sender: UIButton) {
         
-        delegate.deleteRoom(lblName.text!)
+        delegate.deleteDevice(lblName.text!)
         
         
     }
-    @IBAction func updateRoom(sender: AnyObject) {
-        delegate.updateRoom(lblName.text!, type: devicesGloble[lblName.text!]!)
+    @IBAction func updateDevice(sender: AnyObject) {
+        delegate.updateDevice(lblName.text!, type: homeArchGloble[selectedRoomName]![lblName.text!]!)
     }
     
     

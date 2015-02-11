@@ -88,8 +88,10 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         let deleteAction = UIAlertAction(title: "DELETE", style: UIAlertActionStyle.Default) { (
             aletAction) -> Void in
             roomsGloble.removeValueForKey(name)
+            homeArchGloble.removeValueForKey(name)
             println("delete room: \(name)")
             self.tableView.reloadData()
+            selectedRoomNameGloble = ""
             
         }
         
@@ -148,7 +150,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedRoomName = (tableView.cellForRowAtIndexPath(indexPath) as DeleteRoomCell).lblName.text
+        let selectedRoomName = (tableView.cellForRowAtIndexPath(indexPath) as DeleteRoomCell).lblName.text!
 
         performSegueWithIdentifier("roomDevicesSeg", sender: selectedRoomName)
     }
@@ -156,11 +158,11 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue == "roomDevicesSeg" {
+        if segue.identifier == "roomDevicesSeg" {
             let descVC = segue.destinationViewController as DeleteDeviceVC
-            let selectedRoomName = sender as String
+            let selectedRoomName = sender as NSString
 
-            descVC.roomName = selectedRoomName
+            descVC.selectedRoomName = selectedRoomName
         }
 
         

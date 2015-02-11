@@ -95,7 +95,7 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
         // do some before dismiss the view
         let index = self.pickerView.selectedRowInComponent(0)
         
-        
+        // if room name already exist
         if roomsGloble[self.txtName.text] != nil {
             let errorAlert = UIAlertController(title: "EROOR!", message:  "The room name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
             

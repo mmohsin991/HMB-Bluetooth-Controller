@@ -48,7 +48,6 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         self.homeCollectionView.reloadData()
     }
     
@@ -98,6 +97,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         // select the room
         selectedRoomName = roomsGloble.keys.array[indexPath.row]
+        selectedRoomNameGloble = selectedRoomName
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell
         //cell.backgroundColor = UIColor.lightGrayColor()

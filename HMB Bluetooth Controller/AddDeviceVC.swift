@@ -84,6 +84,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         let index = self.pickerView.selectedRowInComponent(0)
 
+        // if device name already exist
         if homeArchGloble[self.selectedRoomName!]![self.txtName.text] != nil {
             let errorAlert = UIAlertController(title: "EROOR!", message:  "The device name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
             

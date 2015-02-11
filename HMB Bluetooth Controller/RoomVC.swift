@@ -83,7 +83,22 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     override func viewWillAppear(animated: Bool) {
-        
+        if selectedRoomNameGloble != "" {
+            selectedRoomName = selectedRoomNameGloble
+            self.deviceCollectionView.reloadData()
+            
+            // update the navigation title when room name has been changed
+            let lblTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 50))
+            lblTitle.text = selectedRoomName
+            lblTitle.textColor = redColor
+            
+            self.navigationItem.titleView = lblTitle
+            
+        }
+            // room have been deleted
+        else{
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     

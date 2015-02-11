@@ -17,7 +17,6 @@ protocol AddRoomDelegate{
 
 class AddRoomVC: UIViewController, UITextFieldDelegate {
 
-    var types = ["BAD", "WC","KELLER", "KINDERZIMMER", "BALKON", "BURO", "ESSZIMMER", "TERRASSE", "HOBBYRAUM"]
 
     var delegate : AddRoomDelegate!
     
@@ -57,11 +56,11 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
     
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return types.count
+        return roomsTypeGloble.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return types[row]
+        return roomsTypeGloble[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -96,11 +95,17 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
         // do some before dismiss the view
         let index = self.pickerView.selectedRowInComponent(0)
         
-        println(index)
-        println(self.types[[index][0]])
+        
+        if roomsGloble[self.txtName.text] != nil {
+            let errorAlert = UIAlertController(title: "EROOR!", message:  "The room name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
+            
+            let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
+            errorAlert.addAction(backAction)
+            self.presentViewController(errorAlert, animated: true, completion: nil)
+        }
 
-        if self.txtName.text != "" {
-            self.delegate.aadRoom(self.txtName.text, type: self.types[[index][0]], VC: self)
+        else if self.txtName.text != "" {
+            self.delegate.aadRoom(self.txtName.text, type: roomsTypeGloble[[index][0]], VC: self)
         }
         
         //self.dismissViewControllerAnimated(true, completion: nil)

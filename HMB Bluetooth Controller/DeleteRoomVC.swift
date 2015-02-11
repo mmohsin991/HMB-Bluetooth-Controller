@@ -44,6 +44,11 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         return 1
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.

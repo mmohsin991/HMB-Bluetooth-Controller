@@ -88,7 +88,12 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return devicesGloble.keys.array.count
+        if self.selectedRoomName != nil {
+            return homeArchGloble[self.selectedRoomName!]!.keys.array.count
+        }
+        else{
+            return 0
+        }
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -98,7 +103,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the device image
-        cell.img.image = UIImage(named: devicesGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]!.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
         if indexPath.row == 1 || indexPath.row == 2 {
@@ -107,7 +112,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         
         // select the device name
-        cell.lblName.text = devicesGloble.keys.array[indexPath.row]
+        cell.lblName.text = homeArchGloble[self.selectedRoomName!]!.keys.array[indexPath.row]
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
         // set badge
@@ -128,8 +133,8 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // select the device
-        selectedDeviceName = devicesGloble.keys.array[indexPath.row]
-        let selectedDeviceImgName = devicesGloble.values.array[indexPath.row]
+        selectedDeviceName = homeArchGloble[self.selectedRoomName!]!.keys.array[indexPath.row]
+        let selectedDeviceImgName = homeArchGloble[self.selectedRoomName!]!.values.array[indexPath.row]
 
         
         //let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
@@ -195,7 +200,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if segue.identifier == "addDeviceSeg" {
             
             let detailView = (segue.destinationViewController as UINavigationController).viewControllers[0] as AddDeviceVC
-            
+            detailView.selectedRoomName = self.selectedRoomName
             detailView.delegate = self
             
         }
@@ -203,7 +208,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     func addDevice(name: String, type: String, VC : UIViewController){
-        devicesGloble[name] = type
+        homeArchGloble[self.selectedRoomName!]![name] = type
         VC.dismissViewControllerAnimated(true, completion: nil)
         
         self.deviceCollectionView.reloadData()

@@ -20,10 +20,12 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     var types = ["LAMPE","VENTILATOR","BACKOFEN", "STEHLAMPE", "LED STRIPE", "ROLLO", "MARKISE", "STECKDOSE", "DIVERSES"]
 
     var delegate : AddDeviceDelegate!
+    var selectedRoomName : String!
 
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var txtName: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,10 +84,15 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         let index = self.pickerView.selectedRowInComponent(0)
 
-        println(self.types[[index][0]])
-        // do some before dismiss the view
+        if homeArchGloble[self.selectedRoomName!]![self.txtName.text] != nil {
+            let errorAlert = UIAlertController(title: "EROOR!", message:  "The device name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
+            
+            let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
+            errorAlert.addAction(backAction)
+            self.presentViewController(errorAlert, animated: true, completion: nil)
+        }
         
-        if self.txtName.text != "" {
+        else if self.txtName.text != "" {
             self.delegate.addDevice(self.txtName.text, type: self.types[[index][0]], VC: self)
         }
         

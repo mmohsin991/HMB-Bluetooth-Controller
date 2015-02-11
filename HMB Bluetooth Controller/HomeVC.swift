@@ -138,10 +138,14 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
 
     func aadRoom(name: String, type: String, VC : UIViewController){
+        
         roomsGloble[name] = type
+        homeArchGloble[name] = [:]
+        
         VC.dismissViewControllerAnimated(true, completion: nil)
         
         self.homeCollectionView.reloadData()
+
     }
     
     

@@ -19,6 +19,9 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     var selectedRoomName : String!
     
+    // sorte the rooms by name
+    var sortedRooms = Array(roomsGloble.keys.array).sorted(<)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +51,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     override func viewWillAppear(animated: Bool) {
+        sortedRooms = Array(roomsGloble.keys.array).sorted(<)
         self.homeCollectionView.reloadData()
     }
     
@@ -57,13 +61,20 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        println(indexPath.row)
+        
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("roomCell", forIndexPath: indexPath) as RoomCell
         let collectionViewWidth = collectionView.bounds.size.width
         
+        // select the room name
+        cell.lblName.text = self.sortedRooms[indexPath.row]
+        cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
+        
         // select the room image
         
-        if UIImage(named: roomsGloble.values.array[indexPath.row]) != nil {
-                    cell.img.image = UIImage(named: roomsGloble.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        if roomsGloble[cell.lblName.text!] != nil {
+                    cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         }
 
 
@@ -80,9 +91,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             cell.badge.tintColor = UIColor.blueColor()
         }
         
-        // select the room name
-        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
-        cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
+
 
         //cell.lblBottom.frame = CGRect(x: collectionView.frame.origin.x, y: collectionView.frame.origin.x+collectionViewWidth, width: collectionView.bounds.size.width, height: 1)
         
@@ -96,7 +105,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         // select the room
-        selectedRoomName = roomsGloble.keys.array[indexPath.row]
+        selectedRoomName = self.sortedRooms[indexPath.row]
         selectedRoomNameGloble = selectedRoomName
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell

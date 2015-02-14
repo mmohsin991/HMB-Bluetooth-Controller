@@ -61,6 +61,10 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
 
         // Configure the cell...
         
+        // sorte the rooms by name
+        let sortedRooms = Array(roomsGloble.keys.array).sorted(<)
+
+        
         // set the delete icon
         cell.btnDelete.setImage(UIImage(named: "delete")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnDelete.imageView?.tintColor = UIColor.redColor()
@@ -68,12 +72,12 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         cell.btnUpdate.setImage(UIImage(named: "update")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnUpdate.imageView?.tintColor = UIColor.blueColor()
         
-        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
+        cell.lblName.text = sortedRooms[indexPath.row]
         cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         cell.img?.tintColor = redColor
         
         
-        cell.lblName.text = roomsGloble.keys.array[indexPath.row]
+
         cell.delegate = self
         cell.index = indexPath.row
 

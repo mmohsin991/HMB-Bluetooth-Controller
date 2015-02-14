@@ -105,6 +105,9 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
         //lableHeading.text = names[row]
         homeArchGloble[selectedRoomName]![self.nameVAR] = deviceTypeGloble[row]
         self.imgDevice.image = UIImage(named: deviceTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        
+        imgDeviceVarString = deviceTypeGloble[row]
+        
         tableView.reloadData()
 
     }

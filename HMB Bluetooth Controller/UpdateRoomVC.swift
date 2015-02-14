@@ -114,6 +114,9 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         //lableHeading.text = names[row]
         roomsGloble[self.nameVAR] = roomsTypeGloble[row]
         self.imgRoom.image = UIImage(named: roomsTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        imgRoomVarString = roomsTypeGloble[row]
+
+        
         tableView.reloadData()
     }
 

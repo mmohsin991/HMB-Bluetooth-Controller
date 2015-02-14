@@ -21,7 +21,9 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     var selectedRoomName : String!
     var selectedRoomNumber : [Int:Int]!
-
+    // sorte the devices by name
+    var sortedDevices : Array<String>!
+    
     @IBOutlet weak var lblRoomNumber: UILabel!
     @IBOutlet weak var deviceCollectionView: UICollectionView!
 
@@ -83,8 +85,11 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     
     override func viewWillAppear(animated: Bool) {
+        
+        
         if selectedRoomNameGloble != "" {
             selectedRoomName = selectedRoomNameGloble
+            sortedDevices = Array(homeArchGloble[self.selectedRoomName!]!.keys.array).sorted(<)
             self.deviceCollectionView.reloadData()
             
             // update the navigation title when room name has been changed
@@ -117,8 +122,14 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         let collectionViewWidth = collectionView.bounds.size.width
         
+
+        
+        // select the device name
+        cell.lblName.text = self.sortedDevices[indexPath.row]
+        cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
+        
         // select the device image
-        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]!.values.array[indexPath.row])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]!)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
         if indexPath.row == 1 || indexPath.row == 2 {
@@ -126,9 +137,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
 
         
-        // select the device name
-        cell.lblName.text = homeArchGloble[self.selectedRoomName!]!.keys.array[indexPath.row]
-        cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
+
         
         // set badge
         cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -148,11 +157,14 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         // select the device
-        selectedDeviceName = homeArchGloble[self.selectedRoomName!]!.keys.array[indexPath.row]
-        let selectedDeviceImgName = homeArchGloble[self.selectedRoomName!]!.values.array[indexPath.row]
+        selectedDeviceName = sortedDevices[indexPath.row]
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
+        
+        
+        let selectedDeviceImgName = homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]
 
         
-        //let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
         //cell.backgroundColor = UIColor.lightGrayColor()
         
         var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("deviceVCID") as? DeviceVC
@@ -160,9 +172,11 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         menuViewController?.modalPresentationStyle = .Popover
         menuViewController?.preferredContentSize = CGSizeMake(260, 340)
+        
+        
         let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as DeviceCell
         
-        menuViewController?.imgDeviceVARString = selectedDeviceImgName
+        menuViewController?.imgDeviceVARString = selectedDeviceImgName!
         menuViewController?.nameVAR = selectedDeviceName
 
 

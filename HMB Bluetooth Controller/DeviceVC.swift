@@ -29,12 +29,12 @@ class DeviceVC: UIViewController {
         
         println(nameVAR)
         
-  //      if UIImage(named: self.imgDeviceVARString) != nil {
-            let img = UIImage(named: self.imgDeviceVARString).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        if UIImage(named: self.imgDeviceVARString) != nil {
+            let img = UIImage(named: self.imgDeviceVARString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             
             self.imgDevice.image = img
             self.imgDevice.tintColor = redColor
-    //    }
+        }
 
 //        self.imgDevice.tintColor = redColor
         

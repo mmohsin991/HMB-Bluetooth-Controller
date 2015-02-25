@@ -54,8 +54,8 @@ class PreferenceCV: UIViewController {
     
     @IBAction func website(sender: UIButton) {
         var url  = NSURL(string: "http://shop.hmb-tec.de/")
-        if UIApplication.sharedApplication().canOpenURL(url) == true  {
-            UIApplication.sharedApplication().openURL(url)
+        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
+            UIApplication.sharedApplication().openURL(url!)
         }
     }
     

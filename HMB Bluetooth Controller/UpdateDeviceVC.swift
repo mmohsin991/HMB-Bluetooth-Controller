@@ -39,11 +39,11 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
         
         println(selectedRoomName)
         
-        if UIImage(named: self.imgDeviceVarString) != nil {
-            let img = UIImage(named: self.imgDeviceVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+ //       if UIImage(named: self.imgDeviceVarString) != nil {
+            let img = UIImage(named: self.imgDeviceVarString).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             self.imgDevice.image = img
             
-        }
+   //     }
         
         self.imgDevice.tintColor = redColor
         //        self.imgDevice.tintColor = redColor
@@ -104,7 +104,7 @@ class UpdateDeviceVC: UIViewController, UITextFieldDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
         homeArchGloble[selectedRoomName]![self.nameVAR] = deviceTypeGloble[row]
-        self.imgDevice.image = UIImage(named: deviceTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.imgDevice.image = UIImage(named: deviceTypeGloble[row]).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         imgDeviceVarString = deviceTypeGloble[row]
         

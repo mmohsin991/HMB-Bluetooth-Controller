@@ -66,14 +66,14 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
 
         
         // set the delete icon
-        cell.btnDelete.setImage(UIImage(named: "delete")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        cell.btnDelete.setImage(UIImage(named: "delete").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnDelete.imageView?.tintColor = UIColor.redColor()
         
-        cell.btnUpdate.setImage(UIImage(named: "update")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
+        cell.btnUpdate.setImage(UIImage(named: "update").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         cell.btnUpdate.imageView?.tintColor = UIColor.blueColor()
         
         cell.lblName.text = sortedRooms[indexPath.row]
-        cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         cell.img?.tintColor = redColor
         
         
@@ -175,8 +175,8 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     func lanchWebsite(){
         var url  = NSURL(string: "http://shop.hmb-tec.de/")
-        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
-            UIApplication.sharedApplication().openURL(url!)
+        if UIApplication.sharedApplication().canOpenURL(url) == true  {
+            UIApplication.sharedApplication().openURL(url)
         }
     }
 }

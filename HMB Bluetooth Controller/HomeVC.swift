@@ -74,7 +74,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // select the room image
         
         if roomsGloble[cell.lblName.text!] != nil {
-                    cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+                    cell.img.image = UIImage(named: roomsGloble[cell.lblName.text!]!).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         }
 
 
@@ -84,7 +84,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         // set badge
-        cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         // set bluetooth
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 4 {
@@ -167,8 +167,8 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func lanchWebsite(){
         var url  = NSURL(string: "http://shop.hmb-tec.de/")
-        if UIApplication.sharedApplication().canOpenURL(url!) == true  {
-            UIApplication.sharedApplication().openURL(url!)
+        if UIApplication.sharedApplication().canOpenURL(url) == true  {
+            UIApplication.sharedApplication().openURL(url)
         }
     }
     

@@ -129,7 +129,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.lblName.font = UIFont.systemFontOfSize(collectionViewWidth/15)
         
         // select the device image
-        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]!)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.img.image = UIImage(named: homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]!).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         cell.img.tintColor = UIColor.lightGrayColor()
         if indexPath.row == 1 || indexPath.row == 2 {
@@ -140,7 +140,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         
         // set badge
-        cell.badge.image = UIImage(named: "bluetooth")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.badge.image = UIImage(named: "bluetooth").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         
         if indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 {
             cell.badge.tintColor = UIColor.blueColor()

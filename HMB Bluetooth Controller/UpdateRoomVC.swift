@@ -37,11 +37,11 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         
         println(nameVAR)
         
-        if UIImage(named: self.imgRoomVarString) != nil {
-            let img = UIImage(named: self.imgRoomVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+    //    if UIImage(named: self.imgRoomVarString) != nil {
+            let img = UIImage(named: self.imgRoomVarString).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             self.imgRoom.image = img
 
-        }
+//        }
         
         self.imgRoom.tintColor = redColor
         //        self.imgDevice.tintColor = redColor
@@ -113,7 +113,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //lableHeading.text = names[row]
         roomsGloble[self.nameVAR] = roomsTypeGloble[row]
-        self.imgRoom.image = UIImage(named: roomsTypeGloble[row])?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        self.imgRoom.image = UIImage(named: roomsTypeGloble[row]).imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         imgRoomVarString = roomsTypeGloble[row]
 
         

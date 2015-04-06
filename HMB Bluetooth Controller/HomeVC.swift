@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,AddRoomDelegate  {
+class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout ,AddRoomDelegate  {
     
     
     @IBOutlet weak var homeCollectionView: UICollectionView!
@@ -126,6 +126,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let targetSize = CGSize(width: collectionViewWidth/2.0, height: collectionViewWidth/2.0)
         return targetSize
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "roomDetailSeg" {
             

@@ -64,7 +64,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         println(indexPath.row)
         
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("roomCell", forIndexPath: indexPath) as RoomCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("roomCell", forIndexPath: indexPath) as! RoomCell
         let collectionViewWidth = collectionView.bounds.size.width
         
         // select the room name
@@ -108,7 +108,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         selectedRoomName = self.sortedRooms[indexPath.row]
         selectedRoomNameGloble = selectedRoomName
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as RoomCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! RoomCell
         //cell.backgroundColor = UIColor.lightGrayColor()
         
         performSegueWithIdentifier("roomDetailSeg", sender: indexPath.row)
@@ -130,15 +130,15 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "roomDetailSeg" {
             
-            let detailView = segue.destinationViewController as RoomVC
+            let detailView = segue.destinationViewController as! RoomVC
             detailView.selectedRoomName = self.selectedRoomName
-            let selectedRow = sender as Int
+            let selectedRow = sender as! Int
             detailView.selectedRoomNumber = [selectedRow:roomsGloble.keys.array.count]
         }
         
         if segue.identifier == "addRoomSeg" {
             
-            let detailView = (segue.destinationViewController as UINavigationController).viewControllers[0] as AddRoomVC
+            let detailView = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! AddRoomVC
             
             detailView.delegate = self
 

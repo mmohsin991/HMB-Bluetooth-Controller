@@ -57,7 +57,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as DeleteRoomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! DeleteRoomCell
 
         // Configure the cell...
         
@@ -154,7 +154,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedRoomName = (tableView.cellForRowAtIndexPath(indexPath) as DeleteRoomCell).lblName.text!
+        let selectedRoomName = (tableView.cellForRowAtIndexPath(indexPath) as! DeleteRoomCell).lblName.text!
 
         performSegueWithIdentifier("roomDevicesSeg", sender: selectedRoomName)
     }
@@ -163,10 +163,10 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "roomDevicesSeg" {
-            let descVC = segue.destinationViewController as DeleteDeviceVC
-            let selectedRoomName = sender as NSString
+            let descVC = segue.destinationViewController as! DeleteDeviceVC
+            let selectedRoomName = sender as! NSString
 
-            descVC.selectedRoomName = selectedRoomName
+            descVC.selectedRoomName = selectedRoomName as! String
         }
 
         

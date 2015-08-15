@@ -57,7 +57,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as DeleteDeviceCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! DeleteDeviceCell
         
         // Configure the cell...
         

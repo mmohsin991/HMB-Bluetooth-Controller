@@ -118,7 +118,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("deviceCell", forIndexPath: indexPath) as DeviceCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("deviceCell", forIndexPath: indexPath) as! DeviceCell
         
         let collectionViewWidth = collectionView.bounds.size.width
         
@@ -159,7 +159,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // select the device
         selectedDeviceName = sortedDevices[indexPath.row]
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as  DeviceCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)as!  DeviceCell
         
         
         let selectedDeviceImgName = homeArchGloble[self.selectedRoomName!]![cell.lblName.text!]
@@ -174,7 +174,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         menuViewController?.preferredContentSize = CGSizeMake(260, 340)
         
         
-        let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as DeviceCell
+        let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! DeviceCell
         
         menuViewController?.imgDeviceVARString = selectedDeviceImgName!
         menuViewController?.nameVAR = selectedDeviceName
@@ -228,7 +228,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         if segue.identifier == "addDeviceSeg" {
             
-            let detailView = (segue.destinationViewController as UINavigationController).viewControllers[0] as AddDeviceVC
+            let detailView = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! AddDeviceVC
             detailView.selectedRoomName = self.selectedRoomName
             detailView.delegate = self
             

@@ -27,7 +27,7 @@ class DeviceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println(nameVAR)
+        print(nameVAR)
         
         if UIImage(named: self.imgDeviceVARString) != nil {
             let img = UIImage(named: self.imgDeviceVARString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

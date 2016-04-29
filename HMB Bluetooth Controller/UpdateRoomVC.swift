@@ -35,7 +35,7 @@ class UpdateRoomVC: UIViewController, UITextFieldDelegate {
         txtName.layer.borderWidth = 1.0
         
         
-        println(nameVAR)
+        print(nameVAR)
         
         if UIImage(named: self.imgRoomVarString) != nil {
             let img = UIImage(named: self.imgRoomVarString)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

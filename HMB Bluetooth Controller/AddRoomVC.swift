@@ -96,7 +96,7 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
         let index = self.pickerView.selectedRowInComponent(0)
         
         // if room name already exist
-        if roomsGloble[self.txtName.text] != nil {
+        if roomsGloble[self.txtName.text!] != nil {
             let errorAlert = UIAlertController(title: "EROOR!", message:  "The room name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
             
             let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
@@ -105,7 +105,7 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
         }
 
         else if self.txtName.text != "" {
-            self.delegate.aadRoom(self.txtName.text, type: roomsTypeGloble[[index][0]], VC: self)
+            self.delegate.aadRoom(self.txtName.text!, type: roomsTypeGloble[[index][0]], VC: self)
         }
         
         //self.dismissViewControllerAnimated(true, completion: nil)
@@ -117,7 +117,7 @@ class AddRoomVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func QRButton(sender: UIButton) {
         
-        println("QR button Press")
+        print("QR button Press")
     }
 
 

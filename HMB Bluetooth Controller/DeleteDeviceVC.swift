@@ -62,7 +62,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         // Configure the cell...
         
         // sorte the devices by name
-        let sortedDevices = Array(homeArchGloble[self.selectedRoomName!]!.keys.array).sorted(<)
+        let sortedDevices = Array(homeArchGloble[self.selectedRoomName!]!.keys).sort(<)
         
         // set the delete icon
         cell.btnDelete.setImage(UIImage(named: "delete")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
@@ -93,7 +93,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         let deleteAction = UIAlertAction(title: "DELETE", style: UIAlertActionStyle.Default) { (
             aletAction) -> Void in
             homeArchGloble[self.selectedRoomName!]!.removeValueForKey(name)
-            println("delete room: \(name)")
+            print("delete room: \(name)")
             self.tableView.reloadData()
             
         }
@@ -113,7 +113,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
     
     
     func updateDevice(name: String, type: String) {
-        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateDeviceVCID") as? UpdateDeviceVC
+        let menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateDeviceVCID") as? UpdateDeviceVC
         
         
         menuViewController?.modalPresentationStyle = .Popover
@@ -125,7 +125,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
         menuViewController?.selectedRoomName = self.selectedRoomName
         
         let popoverMenuViewController = menuViewController?.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection()
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
         
@@ -154,7 +154,7 @@ class DeleteDeviceVC: UITableViewController, DeleteUpdateDevice, UIPopoverPresen
     
     
     func lanchWebsite(){
-        var url  = NSURL(string: "http://shop.hmb-tec.de/")
+        let url  = NSURL(string: "http://shop.hmb-tec.de/")
         if UIApplication.sharedApplication().canOpenURL(url!) == true  {
             UIApplication.sharedApplication().openURL(url!)
         }

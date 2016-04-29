@@ -62,7 +62,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         // Configure the cell...
         
         // sorte the rooms by name
-        let sortedRooms = Array(roomsGloble.keys.array).sorted(<)
+        let sortedRooms = Array(roomsGloble.keys).sort(<)
 
         
         // set the delete icon
@@ -93,7 +93,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
             aletAction) -> Void in
             roomsGloble.removeValueForKey(name)
             homeArchGloble.removeValueForKey(name)
-            println("delete room: \(name)")
+            print("delete room: \(name)")
             self.tableView.reloadData()
             selectedRoomNameGloble = ""
             
@@ -114,7 +114,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     func updateRoom(name: String, type: String) {
-        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateRoomVCID") as? UpdateRoomVC
+        let menuViewController = storyboard!.instantiateViewControllerWithIdentifier("UpdateRoomVCID") as? UpdateRoomVC
         
         
         menuViewController?.modalPresentationStyle = .Popover
@@ -125,7 +125,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
         menuViewController?.tableView = self.tableView
         
         let popoverMenuViewController = menuViewController?.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection()
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
         
@@ -166,7 +166,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
             let descVC = segue.destinationViewController as! DeleteDeviceVC
             let selectedRoomName = sender as! NSString
 
-            descVC.selectedRoomName = selectedRoomName as! String
+            descVC.selectedRoomName = selectedRoomName as String
         }
 
         
@@ -174,7 +174,7 @@ class DeleteRoomVC: UITableViewController, DeleteUpdateRoom, UIPopoverPresentati
     
     
     func lanchWebsite(){
-        var url  = NSURL(string: "http://shop.hmb-tec.de/")
+        let url  = NSURL(string: "http://shop.hmb-tec.de/")
         if UIApplication.sharedApplication().canOpenURL(url!) == true  {
             UIApplication.sharedApplication().openURL(url!)
         }

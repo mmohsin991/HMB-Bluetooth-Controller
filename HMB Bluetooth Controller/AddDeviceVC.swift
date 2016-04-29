@@ -85,7 +85,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let index = self.pickerView.selectedRowInComponent(0)
 
         // if device name already exist
-        if homeArchGloble[self.selectedRoomName!]![self.txtName.text] != nil {
+        if homeArchGloble[self.selectedRoomName!]![self.txtName.text!] != nil {
             let errorAlert = UIAlertController(title: "EROOR!", message:  "The device name \"\(self.txtName.text)\" is already exist please use differnt name.", preferredStyle: .Alert)
             
             let backAction = UIAlertAction(title: "BACK", style: .Default, handler: nil)
@@ -94,7 +94,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
         
         else if self.txtName.text != "" {
-            self.delegate.addDevice(self.txtName.text, type: self.types[[index][0]], VC: self)
+            self.delegate.addDevice(self.txtName.text!, type: self.types[[index][0]], VC: self)
         }
         
        // self.dismissViewControllerAnimated(true, completion: nil)
@@ -105,7 +105,7 @@ class AddDeviceVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     @IBAction func QRButton(sender: UIButton) {
-        println("QR button Press")
+        print("QR button Press")
     }
     
 

@@ -52,7 +52,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         if selectedRoomNumber != nil {
-            lblRoomNumber.text = "\(self.selectedRoomNumber.keys.array[0]+1)/\(self.selectedRoomNumber.values.array[0])"
+            lblRoomNumber.text = "\(Array(self.selectedRoomNumber.keys)[0]+1)/\(Array(self.selectedRoomNumber.values)[0])"
         }
         
         // set corner of the lblRoomNumber round
@@ -74,7 +74,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         
         //Set navigation bar button
-        var barButtons = [
+        let barButtons = [
             UIBarButtonItem(image: UIImage(named: "Settings.png"), style: .Plain, target: self, action: "preference"),
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addDevice")
         ]
@@ -89,7 +89,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         if selectedRoomNameGloble != "" {
             selectedRoomName = selectedRoomNameGloble
-            sortedDevices = Array(homeArchGloble[self.selectedRoomName!]!.keys.array).sorted(<)
+            sortedDevices = Array(homeArchGloble[self.selectedRoomName!]!.keys).sort(<)
             self.deviceCollectionView.reloadData()
             
             // update the navigation title when room name has been changed
@@ -109,7 +109,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.selectedRoomName != nil {
-            return homeArchGloble[self.selectedRoomName!]!.keys.array.count
+            return homeArchGloble[self.selectedRoomName!]!.keys.count
         }
         else{
             return 0
@@ -167,7 +167,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         //cell.backgroundColor = UIColor.lightGrayColor()
         
-        var menuViewController = storyboard!.instantiateViewControllerWithIdentifier("deviceVCID") as? DeviceVC
+        let menuViewController = storyboard!.instantiateViewControllerWithIdentifier("deviceVCID") as? DeviceVC
         
         
         menuViewController?.modalPresentationStyle = .Popover
@@ -182,7 +182,7 @@ class RoomVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         
         let popoverMenuViewController = menuViewController?.popoverPresentationController
-        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+        popoverMenuViewController?.permittedArrowDirections = UIPopoverArrowDirection()
         popoverMenuViewController?.delegate = self
         popoverMenuViewController?.sourceView = self.view
 

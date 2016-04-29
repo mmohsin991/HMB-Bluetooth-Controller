@@ -20,7 +20,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var selectedRoomName : String!
     
     // sorte the rooms by name
-    var sortedRooms = Array(roomsGloble.keys.array).sorted(<)
+    var sortedRooms = Array(roomsGloble.keys).sort(<)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         
         //Set navigation bar button
-        var barButtons = [
+        let barButtons = [
             UIBarButtonItem(image: UIImage(named: "Settings.png"), style: .Plain, target: self, action: "preference"),
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addRoom")
         ]
@@ -51,17 +51,17 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     override func viewWillAppear(animated: Bool) {
-        sortedRooms = Array(roomsGloble.keys.array).sorted(<)
+        sortedRooms = Array(roomsGloble.keys).sort(<)
         self.homeCollectionView.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return roomsGloble.keys.array.count
+        return roomsGloble.keys.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        println(indexPath.row)
+        print(indexPath.row)
         
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("roomCell", forIndexPath: indexPath) as! RoomCell
@@ -133,7 +133,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             let detailView = segue.destinationViewController as! RoomVC
             detailView.selectedRoomName = self.selectedRoomName
             let selectedRow = sender as! Int
-            detailView.selectedRoomNumber = [selectedRow:roomsGloble.keys.array.count]
+            detailView.selectedRoomNumber = [selectedRow:roomsGloble.keys.count]
         }
         
         if segue.identifier == "addRoomSeg" {
@@ -167,7 +167,7 @@ class HomeVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func lanchWebsite(){
-        var url  = NSURL(string: "http://shop.hmb-tec.de/")
+        let url  = NSURL(string: "http://shop.hmb-tec.de/")
         if UIApplication.sharedApplication().canOpenURL(url!) == true  {
             UIApplication.sharedApplication().openURL(url!)
         }
